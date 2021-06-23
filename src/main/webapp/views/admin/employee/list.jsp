@@ -8,10 +8,10 @@
 <title>Danh sách bài viết</title>
 </head>
 <body>
-	
-		<div class="main-content">
+
+	<div class="main-content">
 		<form action="<c:url value='/admin-employee'/>" id="formSubmit"
-		method="get">
+			method="get">
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<ul class="breadcrumb">
@@ -42,15 +42,17 @@
 									</tbody>
 								</table>
 								<ul class="pagination" id="pagination"></ul>
-								<input type="hidden" value="" id="page" name="page"> <input
-									type="hidden" value="" id="maxPageItem" name="maxPageItem">
+								<input type="hidden" value="" id="page" name="page">
+								 <input	type="hidden" value="" id="maxPageItem" name="maxPageItem">
+								 <input	type="hidden" value="" id="sortName" name="sortName">
+								 <input	type="hidden" value="" id="sortBy" name="sortBy">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</form>
-		</div>
+		</form>
+	</div>
 
 	<script type="text/javascript">
 		var totalPages = ${model.totalPage};
@@ -63,6 +65,8 @@
 				startPage : currentPage,
 				onPageClick : function(event, page) {
 					if (currentPage != page) {
+						$('#sortName').val('name');
+						$('#sortBy').val('desc');
 						$('#maxPageItem').val(limit);
 						$('#page').val(page);
 						$('#formSubmit').submit();

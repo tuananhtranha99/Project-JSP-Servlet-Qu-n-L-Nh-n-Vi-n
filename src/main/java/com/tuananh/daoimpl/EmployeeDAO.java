@@ -5,6 +5,7 @@ import java.util.List;
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.mapper.EmployeeMapper;
 import com.tuananh.model.EmployeeModel;
+import com.tuananh.paging.Pageble;
 
 public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployeeDAO{
 
@@ -57,9 +58,16 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 	}
 
 	@Override
-	public List<EmployeeModel> findAll(int offset, int limit) {
-		String sql = "select * from employee where deleted = 0 limit ?, ?";
-		return query(sql, new EmployeeMapper(), offset, limit);
+	public List<EmployeeModel> findAll(Pageble pageble) {
+//		String sql = "select * from employee where deleted = 0 limit ?, ?";
+		StringBuilder sql = new StringBuilder("select * from employee");
+		if(pageble.getSorter() != null) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		}
+		if(pageble.getOffset() != null && pageble.getLimit() != null) {
+			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
+		} 
+		return query(sql.toString(), new EmployeeMapper());
 	}
 
 	@Override

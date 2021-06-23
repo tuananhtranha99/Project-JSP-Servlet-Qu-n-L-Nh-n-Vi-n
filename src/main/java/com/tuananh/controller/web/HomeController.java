@@ -1,4 +1,4 @@
-package com.tuananh.controller.admin;
+package com.tuananh.controller.web;
 
 import java.io.IOException;
 
@@ -12,22 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tuananh.service.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin-home", "/dang-nhap"})
+@WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String action = req.getParameter("action");
-		if(action != null && action.equals("login")) {
-			RequestDispatcher rd = req.getRequestDispatcher("/views/login.jsp");
+		
+			RequestDispatcher rd = req.getRequestDispatcher("/views/web/web.jsp");
 			rd.forward(req, resp);
-		} else if (action != null && action.equals("logout")){
-			
-		} else {
-			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
-			rd.forward(req, resp);
-		}
+		
 		
 	}
 	

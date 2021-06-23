@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tuananh.constant.SystemConstant;
 import com.tuananh.model.EmployeeModel;
+import com.tuananh.paging.PageRequest;
+import com.tuananh.paging.Pageble;
 import com.tuananh.service.IEmployeeService;
+import com.tuananh.sort.Sorter;
+import com.tuananh.utils.FormUtil;
 
 @WebServlet(urlPatterns = {"/admin-employee"})
 public class EmployeeController extends HttpServlet{
@@ -22,18 +26,12 @@ public class EmployeeController extends HttpServlet{
 	private IEmployeeService employeeService; 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EmployeeModel model = new EmployeeModel();
+		EmployeeModel model = FormUtil.toModel(EmployeeModel.class, req);
+
+		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(),
+				new Sorter(model.getSortName(), model.getSortBy()));
 		
-		String pageStr = req.getParameter("page");
-		String maxPageItemStr = req.getParameter("maxPageItem");
-		if(pageStr != null) {
-			model.setPage(Integer.parseInt(pageStr));
-		} 
-		if(maxPageItemStr != null) {
-			model.setMaxPageItem(Integer.parseInt(maxPageItemStr));
-		} 
-		int offset = (model.getPage() - 1) * model.getMaxPageItem();
-		model.setListResult(employeeService.findAll(offset, model.getMaxPageItem()));
+		model.setListResult(employeeService.findAll(pageble));
 		model.setTotalItem(employeeService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem()/model.getMaxPageItem()));
 		req.setAttribute(SystemConstant.MODEL, model);

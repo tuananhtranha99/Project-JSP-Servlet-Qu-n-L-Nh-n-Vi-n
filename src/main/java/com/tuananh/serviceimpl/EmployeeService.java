@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.model.EmployeeModel;
+import com.tuananh.paging.Pageble;
 import com.tuananh.service.IEmployeeService;
 
 public class EmployeeService implements IEmployeeService{
@@ -38,8 +39,8 @@ public class EmployeeService implements IEmployeeService{
 	}
 
 	@Override
-	public List<EmployeeModel> findAll(int offset, int limit) {
-		return employeeDAO.findAll(offset, limit);
+	public List<EmployeeModel> findAll(Pageble pageble) {
+		return employeeDAO.findAll(pageble);
 	}
 
 	@Override
