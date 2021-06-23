@@ -10,4 +10,6 @@ public interface IEmployeeDAO {
 	Long save(EmployeeModel employeeModel);
 	void update(EmployeeModel updateEmployee);
 	void delete(long id);
+	List<EmployeeModel> findAll(int offset, int limit);
+	int getTotalItem();
 }

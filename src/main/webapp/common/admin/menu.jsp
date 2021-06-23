@@ -41,7 +41,7 @@
 		</a> <b class="arrow"></b>
 			<ul class="submenu">
 				<li><a
-					href='<c:url value="/admin-news-list" />'>
+					href='<c:url value="/admin-employee?page=1&maxPageItem=2" />'>
 						<i class="menu-icon fa fa-caret-right"></i> DS bài viết
 				</a> <b class="arrow"></b></li>
 			</ul></li>

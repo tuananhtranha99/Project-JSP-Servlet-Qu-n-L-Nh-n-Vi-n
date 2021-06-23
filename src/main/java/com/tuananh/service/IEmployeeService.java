@@ -9,4 +9,6 @@ public interface IEmployeeService {
 	EmployeeModel save(EmployeeModel employeeModel);
 	EmployeeModel update(EmployeeModel updateEmployee);
 	void delete(long[] ids);
+	List<EmployeeModel> findAll(int offset, int limit);
+	int getTotalItem();
 }

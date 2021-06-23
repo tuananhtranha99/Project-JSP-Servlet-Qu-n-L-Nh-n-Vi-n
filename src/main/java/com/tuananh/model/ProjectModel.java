@@ -2,7 +2,7 @@ package com.tuananh.model;
 
 import java.time.LocalDate;
 
-public class ProjectModel extends AbstractModel{
+public class ProjectModel extends AbstractModel<ProjectModel>{
 	private String name;
 	private String description;
 	private LocalDate start_date;

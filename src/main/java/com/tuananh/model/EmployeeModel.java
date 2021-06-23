@@ -2,7 +2,7 @@ package com.tuananh.model;
 
 import java.sql.Date;
 
-public class EmployeeModel extends AbstractModel{
+public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	private String name;
 	private Date birthday;
 	private boolean gender;

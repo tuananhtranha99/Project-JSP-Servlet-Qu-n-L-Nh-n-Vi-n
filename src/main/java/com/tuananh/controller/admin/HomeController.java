@@ -16,8 +16,6 @@ import com.tuananh.service.IEmployeeService;
 public class HomeController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private IEmployeeService employeeService; 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");

@@ -1,6 +1,6 @@
 package com.tuananh.model;
 
-public class DepartmentModel extends AbstractModel{
+public class DepartmentModel extends AbstractModel<DepartmentModel>{
 	private String name;
 	private String description;
 	private boolean deleted;

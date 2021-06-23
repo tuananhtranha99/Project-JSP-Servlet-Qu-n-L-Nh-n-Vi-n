@@ -1,6 +1,6 @@
 package com.tuananh.model;
 
-public class AccountModel extends AbstractModel{
+public class AccountModel extends AbstractModel<AccountModel>{
 	private String username;
 	private String password;
 	private String email;

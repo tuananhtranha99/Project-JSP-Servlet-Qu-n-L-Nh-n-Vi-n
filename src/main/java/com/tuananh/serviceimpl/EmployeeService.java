@@ -37,4 +37,16 @@ public class EmployeeService implements IEmployeeService{
 		}
 	}
 
+	@Override
+	public List<EmployeeModel> findAll(int offset, int limit) {
+		return employeeDAO.findAll(offset, limit);
+	}
+
+	@Override
+	public int getTotalItem() {
+		// TODO Auto-generated method stub
+		return employeeDAO.getTotalItem();
+	}
+
+
 }

@@ -56,4 +56,16 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 		
 	}
 
+	@Override
+	public List<EmployeeModel> findAll(int offset, int limit) {
+		String sql = "select * from employee where deleted = 0 limit ?, ?";
+		return query(sql, new EmployeeMapper(), offset, limit);
+	}
+
+	@Override
+	public int getTotalItem() {
+		String sql = "select count(*) from employee where deleted = 0";
+		return count(sql);
+	}
+
 }
