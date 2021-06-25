@@ -1,10 +1,13 @@
 package com.tuananh.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import com.tuananh.dao.IDepartmentDAO;
 import com.tuananh.dao.IEmployeeDAO;
+import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
 import com.tuananh.paging.Pageble;
 import com.tuananh.service.IEmployeeService;
@@ -12,6 +15,9 @@ import com.tuananh.service.IEmployeeService;
 public class EmployeeService implements IEmployeeService{
 	@Inject
 	private IEmployeeDAO employeeDAO;
+	
+	@Inject 
+	private IDepartmentDAO departmentDAO;
 
 	@Override
 	public List<EmployeeModel> findByDepartmentId(Long departmentId) {
@@ -47,6 +53,17 @@ public class EmployeeService implements IEmployeeService{
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
 		return employeeDAO.getTotalItem();
+	}
+
+	@Override
+	public EmployeeModel findOne(long id) {
+		EmployeeModel employeeModel = employeeDAO.findOne(id);
+		List<DepartmentModel> departmentModels = departmentDAO.findByEmployeeId(id);
+		if(!departmentModels.isEmpty()) {
+			employeeModel.setDepartmentIds(departmentModels);
+		}
+
+		return employeeModel;
 	}
 
 

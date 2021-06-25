@@ -12,4 +12,5 @@ public interface IEmployeeService {
 	void delete(long[] ids);
 	List<EmployeeModel> findAll(Pageble pageble);
 	int getTotalItem();
+	EmployeeModel findOne(long id);
 }

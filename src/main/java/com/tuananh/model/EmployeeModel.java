@@ -1,6 +1,8 @@
 package com.tuananh.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	private String name;
@@ -12,6 +14,8 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	private String status;
 	private String identity;
 	private boolean deleted;
+	private List<DepartmentModel> departmentIds = new ArrayList<>();
+	private List<ProjectModel> projectIds = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -66,5 +70,17 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	}
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
+	}
+	public List<DepartmentModel> getDepartmentIds() {
+		return departmentIds;
+	}
+	public void setDepartmentIds(List<DepartmentModel> departmentIds) {
+		this.departmentIds = departmentIds;
+	}
+	public List<ProjectModel> getProjectIds() {
+		return projectIds;
+	}
+	public void setProjectIds(List<ProjectModel> projectIds) {
+		this.projectIds = projectIds;
 	}
 }

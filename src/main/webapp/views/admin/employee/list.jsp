@@ -29,7 +29,7 @@
 											<div class="dt-buttons btn-overlap btn-group">
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
-												   title='Thêm nhân viên' href='<c:url value="/admin-new?type=edit"/>'>
+												   title='Thêm nhân viên' href='<c:url value="/admin-employee?type=edit"/>'>
 															<span>
 																<i class="fa fa-plus-circle bigger-110 purple"></i>
 															</span>
@@ -65,10 +65,10 @@
 												<td>${item.name }</td>
 												<td>${item.contact }</td>
 												<td>
-												<c:url var="editURL" value="/admin-new">
-																<c:param name="type" value="edit" />
-																<c:param name="id" value="${item.id}" />
-												</c:url> 
+												<c:url var="editURL" value="/admin-employee">
+													<c:param name="type" value="edit" />
+													<c:param name="id" value="${item.id }" />
+												</c:url>
 												<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
 												  title="Cập nhật nhân viên" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 												</a>
@@ -83,6 +83,7 @@
 								 <input	type="hidden" value="" id="maxPageItem" name="maxPageItem">
 								 <input	type="hidden" value="" id="sortName" name="sortName">
 								 <input	type="hidden" value="" id="sortBy" name="sortBy">
+								 <input	type="hidden" value="list" id="type" name="type">
 							</div>
 						</div>
 					</div>

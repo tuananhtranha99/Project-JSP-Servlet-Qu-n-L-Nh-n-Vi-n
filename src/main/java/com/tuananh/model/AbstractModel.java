@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractModel<T> {
-	private long id;
+	private Long id;
 	private long[] ids;
 	private List<T> listResult = new ArrayList<>();
 	private int page;
@@ -13,11 +13,14 @@ public class AbstractModel<T> {
 	private int totalItem;
 	private String sortName;
 	private String sortBy;
+	private String alert;
+	private String message;
+	private String type;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public long[] getIds() {
@@ -67,5 +70,23 @@ public class AbstractModel<T> {
 	}
 	public void setSortBy(String sortBy) {
 		this.sortBy = sortBy;
+	}
+	public String getAlert() {
+		return alert;
+	}
+	public void setAlert(String alert) {
+		this.alert = alert;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -59,14 +59,15 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 
 	@Override
 	public List<EmployeeModel> findAll(Pageble pageble) {
-//		String sql = "select * from employee where deleted = 0 limit ?, ?";
 		StringBuilder sql = new StringBuilder("select * from employee");
+		sql.append(" where deleted = 0");
 		if(pageble.getSorter() != null) {
 			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
 		}
 		if(pageble.getOffset() != null && pageble.getLimit() != null) {
 			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
 		} 
+		
 		return query(sql.toString(), new EmployeeMapper());
 	}
 
