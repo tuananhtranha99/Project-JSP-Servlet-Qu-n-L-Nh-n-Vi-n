@@ -2,6 +2,7 @@ package com.tuananh.daoimpl;
 
 import java.util.List;
 
+import com.mysql.cj.util.StringUtils;
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.mapper.EmployeeMapper;
 import com.tuananh.model.EmployeeModel;
@@ -61,7 +62,7 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 	public List<EmployeeModel> findAll(Pageble pageble) {
 		StringBuilder sql = new StringBuilder("select * from employee");
 		sql.append(" where deleted = 0");
-		if(pageble.getSorter() != null) {
+		if(pageble.getSorter().getSortName() != null && pageble.getSorter().getSortBy() != null) {
 			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
 		}
 		if(pageble.getOffset() != null && pageble.getLimit() != null) {
@@ -75,6 +76,18 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 	public int getTotalItem() {
 		String sql = "select count(*) from employee where deleted = 0";
 		return count(sql);
+	}
+
+	@Override
+	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
+		StringBuilder sql = new StringBuilder("select * from employee where name like ? and deleted = 0");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		}
+		if(pageble.getOffset() != null && pageble.getLimit() != null) {
+			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
+		} 
+		return query(sql.toString(), new EmployeeMapper(),"%" + employeeName + "%");
 	}
 
 }

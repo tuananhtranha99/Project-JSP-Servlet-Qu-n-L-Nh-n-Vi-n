@@ -24,9 +24,9 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-xs-12">
-                        <c:if test="${not empty message}">
+                        <c:if test="${not empty messageResponse}">
 									<div class="alert alert-${alert}">
-  										${message}
+  										${messageResponse}
 									</div>
 						</c:if>
                         <form id="formSubmit">
@@ -77,8 +77,15 @@
                             <br/>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Ngày sinh</label>
-                                <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="birthday" name="birthday" value="${model.birthday}"/>
+                                <div class="col-sm-9">  
+                                	<c:if test="${not empty model.birthday}">
+                                		<input type="date" class="form-control" id="birthday" name="birthday" value="${model.birthday}"/>
+                                	</c:if>   
+                                	
+                                	<c:if test="${empty model.birthday}">
+                                		<input type="date" class="form-control" id="birthday" name="birthday" value="1950-01-01"/>
+                                	</c:if>                               
+                                    
                                 </div>
                             </div>
                             <br/>
@@ -117,6 +124,8 @@
     </div>
 </div>
 <script>
+	
+
 	$("#btnAddOrUpdate").click(function(e){
 		e.preventDefault(); // tránh submit nhầm url
 		var data = {};
@@ -128,9 +137,6 @@
 			data[""+v.name+""] = v.value;
 		});
 		data["departmentIds"] = department;
-		$.each(formData, function(i, v){
-			console.log(data);
-		});
 		var id = $('#id').val();
 		if(id == ""){
 			addEmployee(data);
@@ -149,10 +155,10 @@
 			data: JSON.stringify(data),
 			dataType: 'json',
 			success: function(result){
-				console.log(result);
+				window.location.href = "${newURL}?type=edit&id=" + result.id+"&message=insert_success";
 			},
 			error: function(error){
-				console.log(error);
+				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
 			}
 		});
 	}
@@ -165,10 +171,10 @@
 			data: JSON.stringify(data),
 			dataType: 'json',
 			success: function(result){
-				console.log(result);
+				window.location.href = "${newURL}?type=edit&id=" + result.id+"&message=update_success";
 			},
 			error: function(error){
-				console.log(error);
+				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
 			}
 		});
 	}

@@ -22,6 +22,7 @@ import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
 import com.tuananh.sort.Sorter;
 import com.tuananh.utils.FormUtil;
+import com.tuananh.utils.MessageUtil;
 
 @WebServlet(urlPatterns = {"/admin-employee"})
 public class EmployeeController extends HttpServlet{
@@ -40,10 +41,14 @@ public class EmployeeController extends HttpServlet{
 		if(model.getType().equals(SystemConstant.LIST)) {
 			Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(),
 					new Sorter(model.getSortName(), model.getSortBy()));
-			
-			model.setListResult(employeeService.findAll(pageble));
+			if(model.getTxtSearch() != null) {
+				model.setListResult(employeeService.findByName(pageble, model.getTxtSearch()));
+			} else {
+				model.setListResult(employeeService.findAll(pageble));
+			}
 			model.setTotalItem(employeeService.getTotalItem());
 			model.setTotalPage((int) Math.ceil((double) model.getTotalItem()/model.getMaxPageItem()));
+			
 			view = "/views/admin/employee/list.jsp";
 		} else if (model.getType().equals(SystemConstant.EDIT)) {
 			List<DepartmentModel> departments = departmentService.findAll();
@@ -69,6 +74,7 @@ public class EmployeeController extends HttpServlet{
 			req.setAttribute("departments", departments);
 			view = "/views/admin/employee/edit.jsp";
 		}
+		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
 		RequestDispatcher rd = req.getRequestDispatcher(view);
 		rd.forward(req, resp);

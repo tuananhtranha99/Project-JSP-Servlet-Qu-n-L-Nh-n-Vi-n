@@ -66,5 +66,11 @@ public class EmployeeService implements IEmployeeService{
 		return employeeModel;
 	}
 
+	@Override
+	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
+		// TODO Auto-generated method stub
+		return employeeDAO.findByName(pageble, employeeName);
+	}
+
 
 }

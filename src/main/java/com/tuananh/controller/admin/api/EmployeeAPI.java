@@ -1,6 +1,7 @@
 package com.tuananh.controller.admin.api;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,6 +21,15 @@ public class EmployeeAPI extends HttpServlet{
 	
 	@Inject
 	private IEmployeeService employeeService;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		EmployeeModel employee = HttpUtil.of(req.getReader()).toModel(EmployeeModel.class);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.writeValue(resp.getOutputStream(), employee);
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
