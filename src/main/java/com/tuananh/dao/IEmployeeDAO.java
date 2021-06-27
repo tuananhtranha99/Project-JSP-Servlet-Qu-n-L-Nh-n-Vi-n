@@ -13,5 +13,6 @@ public interface IEmployeeDAO {
 	void delete(long id);
 	List<EmployeeModel> findAll(Pageble pageble);
 	int getTotalItem();
-	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
+//	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
+	List<EmployeeModel> findTop3();
 }

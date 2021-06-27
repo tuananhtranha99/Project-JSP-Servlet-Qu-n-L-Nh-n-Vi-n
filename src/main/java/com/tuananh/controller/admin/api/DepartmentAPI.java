@@ -13,13 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
 import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
 import com.tuananh.utils.HttpUtil;
 
-@WebServlet(urlPatterns = {"/api-admin-employee"})
-public class EmployeeAPI extends HttpServlet{
+@WebServlet(urlPatterns = {"/api-admin-department"})
+public class DepartmentAPI extends HttpServlet{
 	private static final long serialVersionUID = -7167694688161642839L;
 	
 	@Inject
@@ -53,20 +54,20 @@ public class EmployeeAPI extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
-		EmployeeModel employee = HttpUtil.of(req.getReader()).toModel(EmployeeModel.class);
-		employee = employeeService.save(employee);
+		DepartmentModel department = HttpUtil.of(req.getReader()).toModel(DepartmentModel.class);
+		department = departmentService.save(department);
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(resp.getOutputStream(), employee);
+		mapper.writeValue(resp.getOutputStream(), department);
 	}
 	
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
-		EmployeeModel updateEmployee = HttpUtil.of(req.getReader()).toModel(EmployeeModel.class);
-		updateEmployee = employeeService.update(updateEmployee);
+		DepartmentModel updateDepartment = HttpUtil.of(req.getReader()).toModel(DepartmentModel.class);
+		updateDepartment = departmentService.update(updateDepartment);
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(resp.getOutputStream(), updateEmployee);
+		mapper.writeValue(resp.getOutputStream(), updateDepartment);
 	}
 	
 	@Override
@@ -74,8 +75,8 @@ public class EmployeeAPI extends HttpServlet{
 		ObjectMapper mapper = new ObjectMapper();
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
-		EmployeeModel employee = HttpUtil.of(req.getReader()).toModel(EmployeeModel.class);
-		employeeService.delete(employee.getIds());
+		DepartmentModel department = HttpUtil.of(req.getReader()).toModel(DepartmentModel.class);
+		departmentService.delete(department.getIds());
 		mapper.writeValue(resp.getOutputStream(), "{}");
 	}
 	

@@ -78,16 +78,22 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 		return count(sql);
 	}
 
+//	@Override
+//	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
+//		StringBuilder sql = new StringBuilder("select * from employee where name like ? and deleted = 0");
+//		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+//			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+//		}
+//		if(pageble.getOffset() != null && pageble.getLimit() != null) {
+//			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
+//		} 
+//		return query(sql.toString(), new EmployeeMapper(),"%" + employeeName + "%");
+//	}
+
 	@Override
-	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
-		StringBuilder sql = new StringBuilder("select * from employee where name like ? and deleted = 0");
-		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
-			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
-		}
-		if(pageble.getOffset() != null && pageble.getLimit() != null) {
-			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
-		} 
-		return query(sql.toString(), new EmployeeMapper(),"%" + employeeName + "%");
+	public List<EmployeeModel> findTop3() {
+		StringBuilder sql = new StringBuilder("select * from employee where deleted = 0 limit 3");
+		return query(sql.toString(), new EmployeeMapper());
 	}
 
 }

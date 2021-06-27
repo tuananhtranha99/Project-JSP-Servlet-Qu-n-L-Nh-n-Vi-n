@@ -37,12 +37,19 @@
 	<ul class="nav nav-list">
 		<li><a href="#" class="dropdown-toggle"> <i
 				class="menu-icon fa fa-list"></i> <span class="menu-text"></span>
-				Quản lý nhân viên <b class="arrow fa fa-angle-down"></b>
+				Menu <b class="arrow fa fa-angle-down"></b>
 		</a> <b class="arrow"></b>
 			<ul class="submenu">
 				<li><a
-					href='<c:url value="/admin-employee?type=list&page=1&maxPageItem=2&sortName=name&sortBy=desc" />'>
-						<i class="menu-icon fa fa-caret-right"></i> Danh sách nhân viên
+					href='<c:url value="/admin-employee" />'>
+						<i class="menu-icon fa fa-caret-right"></i> Quản lý nhân viên
+				</a> <b class="arrow"></b></li>
+				<li><a
+					href='<c:url value="/admin-department" />'>
+						<i class="menu-icon fa fa-caret-right"></i> Quản lý phòng ban
+				<li><a
+					href='<c:url value="/admin-project" />'>
+						<i class="menu-icon fa fa-caret-right"></i> Quản lý dự án
 				</a> <b class="arrow"></b></li>
 			</ul></li>
 	</ul>

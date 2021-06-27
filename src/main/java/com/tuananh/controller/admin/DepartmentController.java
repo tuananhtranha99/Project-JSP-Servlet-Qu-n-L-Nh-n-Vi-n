@@ -24,22 +24,20 @@ import com.tuananh.sort.Sorter;
 import com.tuananh.utils.FormUtil;
 import com.tuananh.utils.MessageUtil;
 
-@WebServlet(urlPatterns = { "/admin-employee" })
-public class EmployeeController extends HttpServlet {
+@WebServlet(urlPatterns = { "/admin-department" })
+public class DepartmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private IEmployeeService employeeService;
 
 	@Inject
 	private IDepartmentService departmentService;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EmployeeModel model = new EmployeeModel();
-		String view = "/views/admin/employee/list.jsp";
+		DepartmentModel model = new DepartmentModel();
+		String view = "/views/admin/department/list.jsp";
 		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
-		model.setListResult(employeeService.findAll(pageble));
+		model.setListResult(departmentService.findAll());
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
 		req.getRequestDispatcher(view).forward(req, resp);

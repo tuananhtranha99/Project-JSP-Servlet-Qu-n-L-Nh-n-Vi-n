@@ -12,11 +12,11 @@ import com.tuananh.model.EmployeeModel;
 import com.tuananh.paging.Pageble;
 import com.tuananh.service.IEmployeeService;
 
-public class EmployeeService implements IEmployeeService{
+public class EmployeeService implements IEmployeeService {
 	@Inject
 	private IEmployeeDAO employeeDAO;
-	
-	@Inject 
+
+	@Inject
 	private IDepartmentDAO departmentDAO;
 
 	@Override
@@ -27,19 +27,39 @@ public class EmployeeService implements IEmployeeService{
 
 	@Override
 	public EmployeeModel save(EmployeeModel employeeModel) {
+		
+		List<Long> list = employeeModel.getDepartmentIdMapping(); // danh sách department mà client gửi lên (theo id)
+
+		for (Long o : list) {
+			departmentDAO.saveDepartmentAndEmployee( employeeModel.getId(), o);
+		}
+		
+		
 		Long employeeId = employeeDAO.save(employeeModel);
 		return employeeDAO.findOne(employeeId);
 	}
 
 	@Override
 	public EmployeeModel update(EmployeeModel updateEmployee) {
+		List<Long> list = updateEmployee.getDepartmentIdMapping(); // danh sách department mà client gửi lên (theo id)
+		List<DepartmentModel> departmentExisted = departmentDAO.findByEmployeeId(updateEmployee.getId()); // danh sách
+																											// department
+																											// (theo id)
+		if (!departmentExisted.isEmpty()) {
+			departmentDAO.deleteByEmployeeId(updateEmployee.getId());
+		}
+
+		for (Long o : list) {
+			departmentDAO.saveDepartmentAndEmployee( updateEmployee.getId(), o);
+		}
+
 		employeeDAO.update(updateEmployee);
 		return employeeDAO.findOne(updateEmployee.getId());
 	}
 
 	@Override
 	public void delete(long[] ids) {
-		for(long id : ids) {
+		for (long id : ids) {
 			employeeDAO.delete(id);
 		}
 	}
@@ -59,18 +79,23 @@ public class EmployeeService implements IEmployeeService{
 	public EmployeeModel findOne(long id) {
 		EmployeeModel employeeModel = employeeDAO.findOne(id);
 		List<DepartmentModel> departmentModels = departmentDAO.findByEmployeeId(id);
-		if(!departmentModels.isEmpty()) {
+		if (!departmentModels.isEmpty()) {
 			employeeModel.setDepartmentIds(departmentModels);
 		}
 
 		return employeeModel;
 	}
 
-	@Override
-	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
-		// TODO Auto-generated method stub
-		return employeeDAO.findByName(pageble, employeeName);
-	}
+//	@Override
+//	public List<EmployeeModel> findByName(Pageble pageble, String employeeName) {
+//		// TODO Auto-generated method stub
+//		return employeeDAO.findByName(pageble, employeeName);
+//	}
 
+	@Override
+	public List<EmployeeModel> findTop3() {
+		// TODO Auto-generated method stub
+		return employeeDAO.findTop3();
+	}
 
 }

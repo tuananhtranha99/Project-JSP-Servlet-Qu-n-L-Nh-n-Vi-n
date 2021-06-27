@@ -18,7 +18,7 @@
                     <i class="ace-icon fa fa-home home-icon"></i>
                     <a href="#">Trang chủ</a>
                 </li>
-                <li class="active">Chỉnh sửa nhân viên</li>
+                <li class="active">Chỉnh sửa phòng ban/li>
             </ul><!-- /.breadcrumb -->
         </div>
         <div class="page-content">
@@ -31,79 +31,33 @@
 						</c:if>
                         <form id="formSubmit">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Phòng ban</label>
-                                <div class="col-sm-9">
-                                	
-									<c:forEach var="item" items="${departments}">
-										<label class="checkbox-inline">
-									 		<input type="checkbox" value="${item.id}" ${item.check}>${item.name}
-										</label>
-									</c:forEach>
-								</div>
-                            </div>
-                            <br/>
-                            <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Tên</label>
+                                <label class="col-sm-3 control-label no-padding-right">Tên Phòng Ban</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="name" name="name" value="${model.name}"/>
                                 </div>
                             </div>
                             <br/>
                             <br/>
+                            <br/>
+                            <br/>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>
+                                <label class="col-sm-3 control-label no-padding-right">Mô tả</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="image" name="image" value="${model.image}"/>
+                                    <input type="text" class="form-control" id="description" name="description" value="${model.description}"/>
                                 </div>
                             </div>
                             <br/>
                             <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Liên hệ</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="contact" name="contact" value="${model.contact}"/>
-                                </div>
-                            </div>
                             <br/>
                             <br/>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Email</label>
+                                <label class="col-sm-3 control-label no-padding-right">Danh sách nhân viên</label>
                                 <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="email" name="email" value="${model.email}"/>
+                                    <input type="text" class="form-control" id="identity" name="identity" value=""/>
                                 </div>
                             </div>
                             <br/>
                             <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Ngày sinh</label>
-                                <div class="col-sm-9">  
-                                	<c:if test="${not empty model.birthday}">
-                                		<input type="date" class="form-control" id="birthday" name="birthday" value="${model.birthday}"/>
-                                	</c:if>   
-                                	
-                                	<c:if test="${empty model.birthday}">
-                                		<input type="date" class="form-control" id="birthday" name="birthday" value="1950-01-01"/>
-                                	</c:if>                               
-                                    
-                                </div>
-                            </div>
-                            <br/>
-                            <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Trạng thái</label>
-                                <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="status" name="status" value="${model.status}"/>
-                                </div>
-                            </div>
-                            <br/>
-                            <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Số chứng minh thư</label>
-                                <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="identity" name="identity" value="${model.identity}"/>
-                                </div>
-                            </div>
                             <br/>
                             <br/>
                             <div class="form-group">

@@ -13,5 +13,7 @@ public interface IEmployeeService {
 	List<EmployeeModel> findAll(Pageble pageble);
 	int getTotalItem();
 	EmployeeModel findOne(long id);
-	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
+//	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
+	List<EmployeeModel> findTop3();
+
 }

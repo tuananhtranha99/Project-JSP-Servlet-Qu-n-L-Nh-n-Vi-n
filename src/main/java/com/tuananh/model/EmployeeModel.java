@@ -16,6 +16,8 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	private boolean deleted;
 	private List<DepartmentModel> departmentIds = new ArrayList<>();
 	private List<ProjectModel> projectIds = new ArrayList<>();
+	private List<Long> departmentIdMapping =  new ArrayList<>();
+	
 	
 	public String getName() {
 		return name;
@@ -82,5 +84,11 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	}
 	public void setProjectIds(List<ProjectModel> projectIds) {
 		this.projectIds = projectIds;
+	}
+	public List<Long> getDepartmentIdMapping() {
+		return departmentIdMapping;
+	}
+	public void setDepartmentIdMapping(List<Long> departmentIdMapping) {
+		this.departmentIdMapping = departmentIdMapping;
 	}
 }

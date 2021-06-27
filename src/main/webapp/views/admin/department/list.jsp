@@ -71,8 +71,9 @@
 									<thead>
 										<tr>
 											<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
-											<th>Tên nhân viên</th>
-											<th>Số điện thoại</th>
+											<th>Tên Phòng Ban</th>
+											<th>Mô tả</th>
+											<th>Danh sách nhân viên</th>
 											<th>Thao tác</th>
 										</tr>
 									</thead>
@@ -81,13 +82,14 @@
 											<tr>
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle"></td>
 												<td>${item.name }</td>
-												<td>${item.contact }</td>
+												<td>${item.description}</td>
+												<td><a href="#">Danh sách nhân viên</a></td>
 												<td>
-												<c:url var="editURL" value="/admin-employee-edit">
+												<c:url var="editURL" value="/admin-department-edit">
 													<c:param name="id" value="${item.id }" />
 												</c:url>
 												<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-												  title="Cập nhật nhân viên" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+												  title="Cập nhật phòng ban" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 												</a>
 												</td>
 											</tr>
