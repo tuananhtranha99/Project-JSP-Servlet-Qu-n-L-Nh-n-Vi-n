@@ -11,6 +11,7 @@ public interface IEmployeeDAO {
 	Long save(EmployeeModel employeeModel);
 	void update(EmployeeModel updateEmployee);
 	void delete(long id);
+	void deleteByDepartmentId(Long departmentId);
 	List<EmployeeModel> findAll(Pageble pageble);
 	int getTotalItem();
 //	List<EmployeeModel> findByName(Pageble pageble, String employeeName);

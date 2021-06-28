@@ -61,6 +61,7 @@ public class EmployeeService implements IEmployeeService {
 	public void delete(long[] ids) {
 		for (long id : ids) {
 			employeeDAO.delete(id);
+			departmentDAO.deleteByEmployeeId(id);
 		}
 	}
 

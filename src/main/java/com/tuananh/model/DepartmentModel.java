@@ -1,10 +1,15 @@
 package com.tuananh.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DepartmentModel extends AbstractModel<DepartmentModel> implements Comparable<DepartmentModel>{
 	private String name;
 	private String description;
 	private boolean deleted;
 	private String check;
+	private List<EmployeeModel> employeeList = new ArrayList<>();
+	private List<EmployeeModel> allEmployee = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -42,5 +47,17 @@ public class DepartmentModel extends AbstractModel<DepartmentModel> implements C
 	public int compareTo(DepartmentModel o) {
 		// TODO Auto-generated method stub
 		return (int) (this.getId() - o.getId());
+	}
+	public List<EmployeeModel> getEmployeeList() {
+		return employeeList;
+	}
+	public void setEmployeeList(List<EmployeeModel> employeeList) {
+		this.employeeList = employeeList;
+	}
+	public List<EmployeeModel> getAllEmployee() {
+		return allEmployee;
+	}
+	public void setAllEmployee(List<EmployeeModel> allEmployee) {
+		this.allEmployee = allEmployee;
 	}
 }

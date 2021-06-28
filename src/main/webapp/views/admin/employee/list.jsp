@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh sách bài viết</title>
+<title>Danh sách nhân viên</title>
+
 </head>
 <body>
 
@@ -22,7 +23,7 @@
 					</ul>
 					<!-- /.breadcrumb -->
 				</div>
-				<div class="page-content">
+				<div class="page-content" style="margin-bottom: 50px">
 				
 				<div class="row">
 							<div class="col-xs-12">
@@ -50,7 +51,7 @@
 																<i class="fa fa-plus-circle bigger-110 purple"></i>
 															</span>
 												</a>
-												<button id="btnDelete" type="button"
+												<button id="btnDelete" type="button" disabled
 														class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa nhân viên'>
 																<span>
 																	<i class="fa fa-trash-o bigger-110 pink"></i>
@@ -62,26 +63,31 @@
 								</div>
 							</div>
 						</div>
-				
-				
+					
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="table-responsive">
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
+											<th><input type="checkbox" id="checkedAll" name="checkedAll" ></th>
 											<th>Tên nhân viên</th>
 											<th>Số điện thoại</th>
+											<th>Email</th>
 											<th>Thao tác</th>
 										</tr>
 									</thead>
 									<tbody id="content">
 										<c:forEach var="item" items="${model.listResult}">
 											<tr>
-												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle"></td>
-												<td>${item.name }</td>
+												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
+												<td>
+												<img src="${item.image }" alt="Avatar" class="avatar"
+														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
+												${item.name }
+												</td>
 												<td>${item.contact }</td>
+												<td>${item.email }</td>
 												<td>
 												<c:url var="editURL" value="/admin-employee-edit">
 													<c:param name="id" value="${item.id }" />
@@ -100,7 +106,8 @@
 							</div>
 						</div>
 					</div>
-					</div>
+
+
 				</div>
 		</form>
 	</div>
@@ -185,6 +192,15 @@
 		    }
 		  });
 		});
+		
+		/////////////////////////////////////////
+		var checkboxes = $("input.checkSingle"), submitButt = $("#btnDelete");
+		checkboxes.click(function() {
+			submitButt.attr("disabled", !checkboxes.is(":checked"));
+			
+		});
 	</script>
+	
+
 </body>
 </html>

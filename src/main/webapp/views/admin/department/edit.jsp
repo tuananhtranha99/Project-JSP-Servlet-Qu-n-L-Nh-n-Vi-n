@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-employee"/>
-<c:url var ="NewURL" value="/admin-employee"/>
+<c:url var="APIurl" value="/api-admin-department"/>
+<c:url var ="NewURL" value="/admin-department"/>
 <html>
 <head>
     <title>Chỉnh sửa nhân viên</title>
+	
 </head>
+
 <body>
 <div class="main-content">
     <div class="main-content-inner">
@@ -52,9 +54,45 @@
                             <br/>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Danh sách nhân viên</label>
-                                <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="identity" name="identity" value=""/>
-                                </div>
+                                                              
+                                    
+                                    	<c:if test="${not empty model.employeeList }">
+                                    	 <div class="col-sm-8" style="border: solid #d5d5d5 1px; border-radius: 20px; padding: 10px">  
+                                    		<div class="row">
+                                    			<c:forEach var="item" items="${model.employeeList}"> 
+								    				<div class=" col-sm-5" style="border: solid #d5d5d5 1px; border-radius: 20px; padding: 10px ;margin:5px 5px;">
+														<img src="${item.image}" alt="Avatar" class="avatar"
+														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
+														<div class="text" style="margin-top:5px">
+								    						<div><strong>${item.name }</strong></div>
+								    						<div>${item.email }</div>
+								    					</div>
+													</div>
+												</c:forEach>
+								   			</div>
+								   		 </div>
+                                    	</c:if>
+                                    	
+                                    
+                               
+                                		<c:if test="${empty model.employeeList }">
+                                    		<div class="col-sm-8">
+                                    			<input type="text" class="form-control" id="description" name="description" value="Hiện chưa có nhân viên nào" disabled/>
+                                			</div>
+                                    	</c:if>
+                                    	
+                                    	<div class="col-sm-1">
+                                    	<a flag="info"
+												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
+												   title='Chỉnh sửa danh sách nhân viên' href='#' id="openDialog">
+															<span>
+																<i class="fa fa-plus-circle bigger-110 purple"></i>
+															</span>
+												</a>
+												
+												
+												
+												</div>
                             </div>
                             <br/>
                             <br/>
@@ -66,42 +104,104 @@
                                         <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật thông tin" id="btnAddOrUpdate"/>
                                     </c:if>
                                     <c:if test="${empty model.id}">
-                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="Thêm nhân viên" id="btnAddOrUpdate"/>
+                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="Thêm phòng ban" id="btnAddOrUpdate"/>
                                     </c:if>
                                 </div>
+                                
+                                
                             </div>
                            <input type="hidden" value="${model.id}" id="id" name="id" />
+                           
+                           <div id="dialog-modal" title="Basic modal dialog" style="display:none">
+							  <div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th><input type="checkbox" id="checkedAll" name="checkedAll" ></th>
+											<th>Tên nhân viên</th>
+											<th>Số điện thoại</th>
+											<th>Email</th>
+											
+										</tr>
+									</thead>
+									<tbody id="content">
+										<c:forEach var="item" items="${allEmployee}">
+											<tr>
+												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
+												<td>
+												<img src="${item.image }" alt="Avatar" class="avatar"
+														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
+												${item.name }
+												</td>
+												<td>${item.contact }</td>
+												<td>${item.email }</td>
+											</tr>
+										</c:forEach>
+
+									</tbody>
+								</table>
+								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button>
+								
+							</div>
+						</div>
+					</div>
+							  
+							</div>
+
+                           
                         </form>
                 </div>
+                
+
             </div>
+            
+            
+            
+					
+					
+					
+            
+            
+            
         </div>
     </div>
 </div>
 <script>
-	
+	$(function() {
+	   $( "#openDialog").on("click", function(){ 
+	       $( "#dialog-modal" ).dialog({
+	          height: 600,
+	          width: 700,
+	          modal: true,
+	        });
+	       $( "#dialog-modal" ).show();
+	    });
+	 });
 
 	$("#btnAddOrUpdate").click(function(e){
 		e.preventDefault(); // tránh submit nhầm url
 		var data = {};
 		var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
-		var department = $('input[type=checkbox]:checked').map(function(_, el) {
-		    return $(el).val();
-		}).get();
+// 		var department = $('input[type=checkbox]:checked').map(function(_, el) {
+// 		    return $(el).val();
+// 		}).get();
 		$.each(formData, function(i, v){
 			data[""+v.name+""] = v.value;
 		});
-		data["departmentIdMapping"] = department;
+// 		data["departmentIdMapping"] = department;
 		var id = $('#id').val();
 		if(id == ""){
-			addEmployee(data);
+			addDepartment(data);
 		} else {
-			updateEmployee(data);
+			updateDepartment(data);
 		}
 		
 	});
 	
 	
-	function addEmployee(data){
+	function addDepartment(data){
 		$.ajax({
 			url: '${APIurl}',
 			type: 'POST',
@@ -109,15 +209,15 @@
 			data: JSON.stringify(data),
 			dataType: 'json',
 			success: function(result){
-				window.location.href = "${newURL}?type=edit&id=" + result.id+"&message=insert_success";
+				window.location.href = "${newURL}?id=" + result.id+"&message=insert_success";
 			},
 			error: function(error){
-				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
+				window.location.href = "${newURL}?message=error_system";
 			}
 		});
 	}
 	
-	function updateEmployee(data){
+	function updateDepartment(data){
 		$.ajax({
 			url: '${APIurl}',
 			type: 'PUT',
@@ -125,10 +225,10 @@
 			data: JSON.stringify(data),
 			dataType: 'json',
 			success: function(result){
-				window.location.href = "${newURL}?type=edit&id=" + result.id+"&message=update_success";
+				window.location.href = "${newURL}?id=" + result.id+"&message=update_success";
 			},
 			error: function(error){
-				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
+				window.location.href = "${newURL}?message=error_system";
 			}
 		});
 	}

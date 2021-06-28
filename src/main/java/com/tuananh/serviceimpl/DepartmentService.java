@@ -47,6 +47,7 @@ public class DepartmentService implements IDepartmentService{
 	public void delete(long[] ids) {
 		for (long id : ids) {
 			departmentDAO.delete(id);
+			
 		}
 		
 	}

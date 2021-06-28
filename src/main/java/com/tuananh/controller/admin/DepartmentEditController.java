@@ -38,11 +38,19 @@ public class DepartmentEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DepartmentModel model = FormUtil.toModel(DepartmentModel.class, req);
 		String view = "/views/admin/department/edit.jsp";
+		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
+		
 		if (model.getId() != null) {
 			model = departmentService.findOne(model.getId());	
+			List<EmployeeModel> employeeList = employeeService.findByDepartmentId(model.getId());
+
+			if(employeeList != null) {
+				model.setEmployeeList(employeeList);
+			}
 		}
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
+		req.setAttribute("allEmployee", employeeService.findAll(pageble));
 		RequestDispatcher rd = req.getRequestDispatcher(view);
 		rd.forward(req, resp);
 

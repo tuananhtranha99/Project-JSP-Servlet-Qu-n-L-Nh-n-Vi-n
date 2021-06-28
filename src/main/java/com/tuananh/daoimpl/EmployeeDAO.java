@@ -96,4 +96,12 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 		return query(sql.toString(), new EmployeeMapper());
 	}
 
+	@Override
+	public void deleteByDepartmentId(Long departmentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
 }

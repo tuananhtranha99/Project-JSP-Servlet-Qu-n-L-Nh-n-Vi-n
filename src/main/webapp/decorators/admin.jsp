@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><dec:title default="Trang chủ" /></title>
+
 <link rel="stylesheet"
 	href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
 <link rel="stylesheet"
@@ -30,6 +31,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
 	src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+	<link href="<c:url value='/template/admin/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body class="no-skin">
 	<!-- header -->

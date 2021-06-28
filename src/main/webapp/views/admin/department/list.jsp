@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<c:url var="APIurl" value="/api-admin-employee"/>
-<c:url var ="NewURL" value="/admin-employee"/>
+<c:url var="APIurl" value="/api-admin-department"/>
+<c:url var ="NewURL" value="/admin-department"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,13 +45,13 @@
 											<div class="dt-buttons btn-overlap btn-group">
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
-												   title='Thêm nhân viên' href='<c:url value="/admin-employee-edit"/>'>
+												   title='Thêm phòng ban' href='<c:url value="/admin-department-edit"/>'>
 															<span>
 																<i class="fa fa-plus-circle bigger-110 purple"></i>
 															</span>
 												</a>
 												<button id="btnDelete" type="button"
-														class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa nhân viên'>
+														class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa phòng ban'>
 																<span>
 																	<i class="fa fa-trash-o bigger-110 pink"></i>
 																</span>
@@ -73,7 +73,6 @@
 											<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
 											<th>Tên Phòng Ban</th>
 											<th>Mô tả</th>
-											<th>Danh sách nhân viên</th>
 											<th>Thao tác</th>
 										</tr>
 									</thead>
@@ -81,9 +80,13 @@
 										<c:forEach var="item" items="${model.listResult}">
 											<tr>
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle"></td>
-												<td>${item.name }</td>
+												<td>
+												
+												
+												${item.name }
+												
+												</td>
 												<td>${item.description}</td>
-												<td><a href="#">Danh sách nhân viên</a></td>
 												<td>
 												<c:url var="editURL" value="/admin-department-edit">
 													<c:param name="id" value="${item.id }" />
