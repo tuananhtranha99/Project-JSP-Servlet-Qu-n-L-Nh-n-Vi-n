@@ -98,8 +98,8 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 
 	@Override
 	public void deleteByDepartmentId(Long departmentId) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from employee_department where id_department = ?";
+		update(sql, departmentId);
 	}
 
 	

@@ -131,7 +131,7 @@
 											<tr>
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
 												<td>
-												<img src="${item.image }" alt="Avatar" class="avatar"
+												<img src="${item.image}" alt="Avatar" class="avatar"
 														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
 												${item.name }
 												</td>
@@ -169,6 +169,34 @@
     </div>
 </div>
 <script>
+$(document).ready(function() {
+	  $("#checkedAll").change(function(){
+	    if(this.checked){
+	      $(".checkSingle").each(function(){
+	        this.checked=true;
+	      })              
+	    }else{
+	      $(".checkSingle").each(function(){
+	        this.checked=false;
+	      })              
+	    }
+	  });
+	
+	  $(".checkSingle").click(function () {
+	    if ($(this).is(":checked")){
+	      var isAllChecked = 0;
+	      $(".checkSingle").each(function(){
+	        if(!this.checked)
+	           isAllChecked = 1;
+	      })              
+	      if(isAllChecked == 0){ $("#checkedAll").prop("checked", true); }     
+	    }else {
+	      $("#checkedAll").prop("checked", false);
+	    }
+	  });
+	});
+	
+
 	$(function() {
 	   $( "#openDialog").on("click", function(){ 
 	       $( "#dialog-modal" ).dialog({
@@ -184,13 +212,13 @@
 		e.preventDefault(); // tránh submit nhầm url
 		var data = {};
 		var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
-// 		var department = $('input[type=checkbox]:checked').map(function(_, el) {
-// 		    return $(el).val();
-// 		}).get();
+		var employee = $('input[type=checkbox]:checked').map(function(_, el) {
+		    return $(el).val();
+		}).get();
 		$.each(formData, function(i, v){
 			data[""+v.name+""] = v.value;
 		});
-// 		data["departmentIdMapping"] = department;
+		data["employeeIdMapping"] = employee;
 		var id = $('#id').val();
 		if(id == ""){
 			addDepartment(data);

@@ -9,7 +9,7 @@ public class DepartmentModel extends AbstractModel<DepartmentModel> implements C
 	private boolean deleted;
 	private String check;
 	private List<EmployeeModel> employeeList = new ArrayList<>();
-	private List<EmployeeModel> allEmployee = new ArrayList<>();
+	private List<Long> employeeIdMapping = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -54,10 +54,10 @@ public class DepartmentModel extends AbstractModel<DepartmentModel> implements C
 	public void setEmployeeList(List<EmployeeModel> employeeList) {
 		this.employeeList = employeeList;
 	}
-	public List<EmployeeModel> getAllEmployee() {
-		return allEmployee;
+	public List<Long> getEmployeeIdMapping() {
+		return employeeIdMapping;
 	}
-	public void setAllEmployee(List<EmployeeModel> allEmployee) {
-		this.allEmployee = allEmployee;
+	public void setEmployeeIdMapping(List<Long> employeeIdMapping) {
+		this.employeeIdMapping = employeeIdMapping;
 	}
 }

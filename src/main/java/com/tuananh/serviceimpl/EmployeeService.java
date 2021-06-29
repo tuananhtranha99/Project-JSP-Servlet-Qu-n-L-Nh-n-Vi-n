@@ -29,13 +29,13 @@ public class EmployeeService implements IEmployeeService {
 	public EmployeeModel save(EmployeeModel employeeModel) {
 		
 		List<Long> list = employeeModel.getDepartmentIdMapping(); // danh sách department mà client gửi lên (theo id)
-
+		Long employeeId = employeeDAO.save(employeeModel);
 		for (Long o : list) {
-			departmentDAO.saveDepartmentAndEmployee( employeeModel.getId(), o);
+			departmentDAO.saveDepartmentAndEmployee( employeeId, o);
 		}
 		
 		
-		Long employeeId = employeeDAO.save(employeeModel);
+		
 		return employeeDAO.findOne(employeeId);
 	}
 

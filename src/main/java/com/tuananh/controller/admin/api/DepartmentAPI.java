@@ -1,16 +1,22 @@
 package com.tuananh.controller.admin.api;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tuananh.model.DepartmentModel;
@@ -19,6 +25,7 @@ import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
 import com.tuananh.utils.HttpUtil;
 
+@MultipartConfig
 @WebServlet(urlPatterns = {"/api-admin-department"})
 public class DepartmentAPI extends HttpServlet{
 	private static final long serialVersionUID = -7167694688161642839L;

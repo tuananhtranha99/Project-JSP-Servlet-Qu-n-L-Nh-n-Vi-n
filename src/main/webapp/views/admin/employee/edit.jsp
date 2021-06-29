@@ -53,8 +53,11 @@
                             <br/>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="image" name="image" value="${model.image}"/>
+                                <div class="col-sm-9" style="display:flex" >
+                                   
+                                    <input type="text" class="form-control col-sm-9" id="image" name="image" value="${model.image}"/>
+                                    
+                                   
                                 </div>
                             </div>
                             <br/>
@@ -139,7 +142,9 @@
 		data["departmentIdMapping"] = department;
 		var id = $('#id').val();
 		if(id == ""){
+			
 			addEmployee(data);
+			
 		} else {
 			updateEmployee(data);
 		}

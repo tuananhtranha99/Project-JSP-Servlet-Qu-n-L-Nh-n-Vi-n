@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.tuananh.dao.IDepartmentDAO;
+import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
 import com.tuananh.service.IDepartmentService;
@@ -12,6 +13,9 @@ import com.tuananh.service.IDepartmentService;
 public class DepartmentService implements IDepartmentService{
 	@Inject
 	private IDepartmentDAO departmentDAO;
+	
+	@Inject 
+	private IEmployeeDAO employeeDAO;
 	
 	@Override
 	public List<DepartmentModel> findAll() {
@@ -33,12 +37,28 @@ public class DepartmentService implements IDepartmentService{
 
 	@Override
 	public DepartmentModel save(DepartmentModel departmentModel) {
+		List<Long> list = departmentModel.getEmployeeIdMapping();
 		Long departmentId = departmentDAO.save(departmentModel);
+		for (Long o : list) {
+			departmentDAO.saveDepartmentAndEmployee( o, departmentId);
+		}
+		
 		return departmentDAO.findOne(departmentId);
 	}
 
 	@Override
 	public DepartmentModel update(DepartmentModel updateDepartment) {
+		List<Long> list = updateDepartment.getEmployeeIdMapping(); // danh sách employee mà client gửi lên (theo id)
+		List<EmployeeModel> employeeExisted = employeeDAO.findByDepartmentId(updateDepartment.getId()); // danh sách
+																											// employee
+																											// (theo id)
+		if (!employeeExisted.isEmpty()) {
+			employeeDAO.deleteByDepartmentId(updateDepartment.getId());
+		}
+
+		for (Long o : list) {
+			departmentDAO.saveDepartmentAndEmployee( o, updateDepartment.getId());
+		}
 		departmentDAO.update(updateDepartment);
 		return departmentDAO.findOne(updateDepartment.getId());
 	}
