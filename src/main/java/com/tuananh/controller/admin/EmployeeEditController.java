@@ -23,12 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tuananh.constant.SystemConstant;
 import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
 import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
 import com.tuananh.utils.FormUtil;
+import com.tuananh.utils.HttpUtil;
 import com.tuananh.utils.MessageUtil;
 
 @WebServlet(urlPatterns = { "/admin-employee-edit" })
@@ -45,17 +47,19 @@ public class EmployeeEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmployeeModel model = FormUtil.toModel(EmployeeModel.class, req);
 		String view = "/views/admin/employee/edit.jsp";
-		List<DepartmentModel> departments = departmentService.findAll();
+		List<DepartmentModel> departments = departmentService.findAll(); // lấy ra tất cả department
 		if (model.getId() != null) {
 			model = employeeService.findOne(model.getId());
-			List<DepartmentModel> departmentChecked = departmentService.findByEmployeeId(model.getId());
+			List<DepartmentModel> departmentChecked = departmentService.findByEmployeeId(model.getId()); // lấy ra tất cả department mà employee này tham gia
+			
+			// thực hiện kiểm tra department nào mà employee có tham gia thì department đó sẽ được check để thể hiện là đã tham gia
 			if (departmentChecked != null) {
 				if (departments.size() == departmentChecked.size()) {
 					for (DepartmentModel dep : departments) {
 						dep.setCheck("checked");
 					}
 				} else {
-					departments.removeAll(departmentChecked);
+//					departments.removeAll(departmentChecked);
 					for (DepartmentModel dep : departmentChecked) {
 						dep.setCheck("checked");
 
@@ -73,10 +77,13 @@ public class EmployeeEditController extends HttpServlet {
 
 	}
 
+	
+	
+	//Ajax employee details
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	   
-	    
+		
 	}
-
 }
+
+

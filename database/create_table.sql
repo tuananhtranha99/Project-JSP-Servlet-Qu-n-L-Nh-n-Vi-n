@@ -36,14 +36,21 @@ alter table employee add identity bigint;
 alter table employee add constraint foreign key(identity) references identity_card(numb);
 alter table employee modify column contact varchar(20);
 
+drop trigger nonEmptyString
 delimiter #
-create trigger nonEmptyString
+create trigger nonEmptyImage
 before insert
 on employee
 for each row
 BEGIN
 IF NEW.image = '' THEN
-   SET NEW.image = 'default.png';
+	IF NEW.gender = b'0' THEN
+   SET NEW.image = 'default_man.jpg';
+   END IF;
+   
+   IF NEW.gender = b'1' THEN
+   SET NEW.image = 'default_woman.png';
+   END IF;
 END IF;
 
 end#

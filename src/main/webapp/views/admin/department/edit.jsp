@@ -112,7 +112,7 @@
                             </div>
                            <input type="hidden" value="${model.id}" id="id" name="id" />
                            
-                           <div id="dialog-modal" title="Basic modal dialog" style="display:none">
+                           <div id="dialog-modal" title="Danh sách nhân viên" style="display:none">
 							  <div class="row">
 						<div class="col-xs-12">
 							<div class="table-responsive">
@@ -129,7 +129,7 @@
 									<tbody id="content">
 										<c:forEach var="item" items="${allEmployee}">
 											<tr>
-												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
+												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ${item.check }></td>
 												<td>
 												<img src="${item.image}" alt="Avatar" class="avatar"
 														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
@@ -142,7 +142,7 @@
 
 									</tbody>
 								</table>
-								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button>
+<!-- 								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button> -->
 								
 							</div>
 						</div>

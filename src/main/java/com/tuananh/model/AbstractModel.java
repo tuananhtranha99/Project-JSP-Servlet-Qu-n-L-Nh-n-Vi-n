@@ -17,6 +17,7 @@ public class AbstractModel<T> {
 	private String message;
 	private String type;
 	private String txtSearch;
+	private String check;
 	
 	public Long getId() {
 		return id;
@@ -95,5 +96,11 @@ public class AbstractModel<T> {
 	}
 	public void setTxtSearch(String txtSearch) {
 		this.txtSearch = txtSearch;
+	}
+	public String getCheck() {
+		return check;
+	}
+	public void setCheck(String check) {
+		this.check = check;
 	}
 }

@@ -39,10 +39,27 @@ public class DepartmentEditController extends HttpServlet {
 		DepartmentModel model = FormUtil.toModel(DepartmentModel.class, req);
 		String view = "/views/admin/department/edit.jsp";
 		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
+		List<EmployeeModel> allEmployee = employeeService.findAll(pageble); // lấy ra tất cả employee
 		
 		if (model.getId() != null) {
 			model = departmentService.findOne(model.getId());	
-			List<EmployeeModel> employeeList = employeeService.findByDepartmentId(model.getId());
+			List<EmployeeModel> employeeList = employeeService.findByDepartmentId(model.getId()); // lấy ra các employee có tham gia department này
+			
+			if (employeeList != null) {
+				if (allEmployee.size() == employeeList.size()) {
+					for (EmployeeModel emp : allEmployee) {
+						emp.setCheck("checked");
+					}
+				} else {
+					allEmployee.removeAll(employeeList);
+					for (EmployeeModel emp : employeeList) {
+						emp.setCheck("checked");
+
+					}
+					allEmployee.addAll(employeeList);
+					Collections.sort(allEmployee);
+				}
+			}
 
 			if(employeeList != null) {
 				model.setEmployeeList(employeeList);
@@ -50,7 +67,7 @@ public class DepartmentEditController extends HttpServlet {
 		}
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
-		req.setAttribute("allEmployee", employeeService.findAll(pageble));
+		req.setAttribute("allEmployee", allEmployee);
 		RequestDispatcher rd = req.getRequestDispatcher(view);
 		rd.forward(req, resp);
 

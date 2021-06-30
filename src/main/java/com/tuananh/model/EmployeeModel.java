@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeModel extends AbstractModel<EmployeeModel>{
+public class EmployeeModel extends AbstractModel<EmployeeModel> implements Comparable<EmployeeModel>{
 	private String name;
 	private Date birthday;
 	private boolean gender;
@@ -17,6 +17,7 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	private List<DepartmentModel> departmentIds = new ArrayList<>();
 	private List<ProjectModel> projectIds = new ArrayList<>();
 	private List<Long> departmentIdMapping =  new ArrayList<>();
+	private Long idDetails;
 	
 	
 	public String getName() {
@@ -90,5 +91,24 @@ public class EmployeeModel extends AbstractModel<EmployeeModel>{
 	}
 	public void setDepartmentIdMapping(List<Long> departmentIdMapping) {
 		this.departmentIdMapping = departmentIdMapping;
+	}
+	public Long getIdDetails() {
+		return idDetails;
+	}
+	public void setIdDetails(Long idDetails) {
+		this.idDetails = idDetails;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof EmployeeModel)) {
+            return false;
+        }
+		EmployeeModel other = (EmployeeModel)obj;
+		return other.getId().equals(this.getId());
+	}
+	@Override
+	public int compareTo(EmployeeModel o) {
+		// TODO Auto-generated method stub
+		return (int) (this.getId() - o.getId());
 	}
 }

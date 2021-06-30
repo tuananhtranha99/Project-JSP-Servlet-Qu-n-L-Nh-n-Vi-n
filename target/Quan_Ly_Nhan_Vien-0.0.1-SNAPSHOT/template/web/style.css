@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-image: url("https://bksoftwarevn.com/resources/img/background1.jpg");
+    color: white;
+    text-align: center;
+    background-position: center;
+}
+
+.all{
+    background-color: rgb(51 49 58 / 80%);
+}
+
+.bksoftware-logo{
+    margin-top: 100px;
+}
+
+.bksoftware-logo img{
+    width: 150px;
+}
+
+.bksoftware-header{
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 8px;
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+h2{
+    text-transform: uppercase;
+    font-weight: 350;
+    letter-spacing: 17px;
+    font-size: 50px;
+    margin-top: 90px;
+    text-align: center;
+}
+
+p{
+    
+font-size: 15px;
+    
+font-weight: 400;
+    
+margin: 45px 25px;
+    
+line-height: 35px;
+    
+letter-spacing: 2px;
+    
+text-align: left;
+}
+
+.bksoftware-button{
+
+}
+
+.bksoftware-button button{
+    border-radius: 30px;
+    width: 150px;
+    height:50px;
+    text-transform: uppercase;
+    color: white;
+    background-color: transparent;
+    border: 2px solid #ffc700;
+    margin: 30px 20px;
+    font-size: 13px;
+    transition: 0.5s;
+}
+
+#button1{
+    background-color:#ffc700
+}
+
+#button1:hover{
+    background-color: #ac8600;
+    transition: 0.5s;
+}
+
+.bksoftware-button button:hover{
+    background-color: #ffc700;
+    transition: 0.5s;
+}
+
+.bksoftware-footer{
+    margin-top: 17px;
+}
+
+.bksoftware-footer ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.bksoftware-footer li{
+    margin: 15px;  
+    letter-spacing: 3px;
+}
+
+
+.bksoftware-footer a{
+    text-decoration: none;
+    color: #bababa;
+    text-transform: uppercase;
+    font-size: 10px;
+    transition: 0.5s;
+}
+
+.bksoftware-footer a:hover{
+    color: white;
+    transition: 0.5s;
+}

@@ -8,8 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Danh sách nhân viên</title>
- <link href="<c:url value='/template/admin/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 </head>
 <body>
@@ -46,7 +44,7 @@
 									
 										<div class="pull-right tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<a flag="info"
+												<a 
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
 												   title='Thêm nhân viên' href='<c:url value="/admin-employee-edit"/>'>
 															<span>
@@ -84,7 +82,7 @@
 											<tr>
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
 												<td >
-												<a href="#" class="openDialog">
+												<a href='<c:url value="/admin-employee-detail?id=${item.id}"></c:url>' class="openDialog" style="color: black">
 												<img src="${item.image}" alt="Avatar" class="avatar "
 														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
 												${item.name }
@@ -105,135 +103,135 @@
 
 									</tbody>
 								</table>
-								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button>
+<!-- 								<button class="btn btn-primary" id="loadMore">Xem thêm</button> -->
 								
-								<div id="dialog-modal" title="Thông tin chi tiết" style="display:none">
-							  <div class="row">
-						<div class="col-xs-12">
-							<div class="container">
-    <div class="team-single">
-        <div class="row">
-            <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
-                <div class="team-single-img">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                </div>
-                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
-                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Class Teacher</h4>
-                    <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>
+<!--  								<div id="dialog-modal" title="Thông tin chi tiết" style="display:none">  -->
+<!-- 							  <div class="row"> -->
+<!-- 						<div class="col-xs-12"> -->
+<!-- 							<div class="container"> -->
+<!--     <div class="team-single"> -->
+<!--         <div class="row"> -->
+<!--             <div class="col-lg-4 col-md-5 xs-margin-30px-bottom"> -->
+<!--                 <div class="team-single-img"> -->
+<!--                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""> -->
+<!--                 </div> -->
+<!--                 <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center"> -->
+<!--                     <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Class Teacher</h4> -->
+<!--                     <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p> -->
                     
-                </div>
-            </div>
+<!--                 </div> -->
+<!--             </div> -->
 
-            <div class="col-lg-8 col-md-7">
-                <div class="team-single-text padding-50px-left sm-no-padding-left">
-                    <h4 class="font-size38 sm-font-size32 xs-font-size30">Buckle Giarza</h4>
-                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>
-                    <div class="contact-info-section margin-40px-tb">
-                        <ul class="list-style9 no-margin">
-                            <li>
+<!--             <div class="col-lg-8 col-md-7"> -->
+<!--                 <div class="team-single-text padding-50px-left sm-no-padding-left"> -->
+<!--                     <h4 class="font-size38 sm-font-size32 xs-font-size30">Buckle Giarza</h4> -->
+<!--                     <p class="no-margin-bottom"></p> -->
+<!--                     <div class="contact-info-section margin-40px-tb"> -->
+<!--                         <ul class="list-style9 no-margin"> -->
+<!--                             <li> -->
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-user text-orange" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left text-orange">Tên nhân viên</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>Master's Degrees</p>
-                                    </div>
-                                </div>
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-user text-orange" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left text-orange">Tên nhân viên</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p>Master's Degrees</p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                            </li>
-                            <li>
+<!--                             </li> -->
+<!--                             <li> -->
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-birthday-cake text-yellow" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left text-yellow">Ngày sinh</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>4 Year in Education</p>
-                                    </div>
-                                </div>
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-birthday-cake text-yellow" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left text-yellow">Ngày sinh</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p>4 Year in Education</p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                            </li>
-                            <li>
+<!--                             </li> -->
+<!--                             <li> -->
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-transgender text-lightred" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left text-lightred">Giới tính</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>Design Category</p>
-                                    </div>
-                                </div>
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-transgender text-lightred" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left text-lightred">Giới tính</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p>Design Category</p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                            </li>
-                            <li>
+<!--                             </li> -->
+<!--                             <li> -->
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-map-marker text-green" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left text-green">Địa chỉ</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>Regina ST, London, SK.</p>
-                                    </div>
-                                </div>
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-map-marker text-green" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left text-green">Địa chỉ</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p>Regina ST, London, SK.</p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                            </li>
-                            <li>
+<!--                             </li> -->
+<!--                             <li> -->
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-phone text-purple" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left xs-margin-four-left text-purple">Số điện thoại</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>(+44) 123 456 789</p>
-                                    </div>
-                                </div>
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-phone text-purple" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left xs-margin-four-left text-purple">Số điện thoại</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p>(+44) 123 456 789</p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
 
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-envelope-o text-pink" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Email</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p><a href="javascript:void(0)">addyour@emailhere</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fa fa-info text-sky" aria-hidden="true"></i>
-                                        <strong class="margin-10px-left xs-margin-four-left text-sky">Số căn cước công dân</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p><a href="javascript:void(0)">addyour@emailhere</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-envelope-o text-pink" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left xs-margin-four-left text-pink">Email</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p><a href="javascript:void(0)">addyour@emailhere</a></p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <div class="row"> -->
+<!--                                     <div class="col-md-5 col-5"> -->
+<!--                                         <i class="fa fa-info text-sky" aria-hidden="true"></i> -->
+<!--                                         <strong class="margin-10px-left xs-margin-four-left text-sky">Số căn cước công dân</strong> -->
+<!--                                     </div> -->
+<!--                                     <div class="col-md-7 col-7"> -->
+<!--                                         <p><a href="javascript:void(0)">addyour@emailhere</a></p> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </li> -->
+<!--                         </ul> -->
+<!--                     </div> -->
 
 
                     
 
-                </div>
-            </div>
+<!--                 </div> -->
+<!--             </div> -->
 
             
-        </div>
-    </div>
-</div>
-						</div>
-					</div>
+<!--         </div> -->
+<!--     </div> -->
+<!-- </div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 							  
-							</div>
+<!-- 							</div> -->
 								
 							</div>
 						</div>
@@ -241,60 +239,16 @@
 
 
 				</div>
+			</div>
 		</form>
 	</div>
 
 	<script type="text/javascript">
-		$(function() {
-		   $( ".openDialog").on("click", function(){ 
-		       $( "#dialog-modal" ).dialog({
-		          height: 600,
-		          width: 1200,
-		          modal: true,
-		        });
-		       $( "#dialog-modal" ).show();
-		    });
-		 });
-
-		function loadMore(){
-			$.ajax({
-				url: '${APIurl}',
-				type: 'GET',
-				contentType: 'text/html;charset=UTF-8',
-				success: function(result){
-// 					console.log(result);
-					var content = document.getElementById('content');
-					content.innerHTML += result;
-				},
-				error: function(error){
-					console.log(error);
-				}
-			});
-		}
+	
+	
+	
 		
-		$('#btnDelete').click(function(){
-			var data = {};
-			var ids = $('tbody input[type=checkbox]:checked').map(function(){
-				return $(this).val();
-			}).get();
-			data['ids'] = ids;
-			deleteEmployee(data);
-		});
 		
-		function deleteEmployee(data){
-			$.ajax({
-				url: '${APIurl}',
-				type: 'DELETE',
-				contentType: 'application/json',
-				data: JSON.stringify(data),
-				success: function(result){
-					window.location.href = "${newURL}?message=delete_success";
-				},
-				error: function(error){
-					window.location.href = "${newURL}?message=error_system";
-				}
-			});
-		}
 		
 // 		$('#btnSearch').click(function(){
 // 			var data = {};
@@ -307,7 +261,7 @@
 			
 // 		}
 
-		$(document).ready(function() {
+
 		  $("#checkedAll").change(function(){
 		    if(this.checked){
 		      $(".checkSingle").each(function(){
@@ -332,7 +286,78 @@
 		      $("#checkedAll").prop("checked", false);
 		    }
 		  });
-		});
+		  
+		  $('#btnDelete').click(function(){
+				var data = {};
+				var ids = $('tbody input[type=checkbox]:checked').map(function(){
+					return $(this).val();
+				}).get();
+				data['ids'] = ids;
+				deleteEmployee(data);
+			});
+			
+			function deleteEmployee(data){
+				$.ajax({
+					url: '${APIurl}',
+					type: 'DELETE',
+					contentType: 'application/json',
+					data: JSON.stringify(data),
+					success: function(result){
+						window.location.href = "${newURL}?message=delete_success";
+					},
+					error: function(error){
+						window.location.href = "${newURL}?message=error_system";
+					}
+				});
+			}
+			
+			
+		
+
+// 				$("body").on('click', '#loadMore' ,function(){ 
+// 					$.ajax({
+// 						url: '/Quan_Ly_Nhan_Vien/employee-load',
+// 						type: 'POST',
+// 						contentType: 'text/html;charset=UTF-8',
+// 						success: function(result){
+// //								console.log(result);
+// 							var content = $('#content');
+// 							content.html(result);
+// 						},
+// 						error: function(error){
+// 							console.log(error);
+// 						}
+// 					});
+					
+// 				});	
+		
+		
+// 		function showDetailsEmployee(idDetails){
+		    
+// 			   var data = {};
+// 			   data['idDetails'] = idDetails;
+// 			   $.ajax({
+// 					url: '/Quan_Ly_Nhan_Vien/employee-edit',
+// 					type: 'POST',
+// 					contentType: 'text/html;charset=UTF-8',
+// 					data: JSON.stringify(data),
+// 					cache: false,
+// 					success: function(result){
+// 						var content = $('#dialog-modal');
+// 						content.html(result);
+// 					},
+// 					error: function(error){
+						
+// 					}
+// 				});
+// 		       $( "#dialog-modal" ).dialog({
+// 		          height: 600,
+// 		          width: 1200,
+// 		          modal: true,
+// 		        });
+// 		       $( "#dialog-modal" ).show();
+		  
+// 	};
 		
 		/////////////////////////////////////////
 		

@@ -7,7 +7,6 @@ public class DepartmentModel extends AbstractModel<DepartmentModel> implements C
 	private String name;
 	private String description;
 	private boolean deleted;
-	private String check;
 	private List<EmployeeModel> employeeList = new ArrayList<>();
 	private List<Long> employeeIdMapping = new ArrayList<>();
 	
@@ -28,12 +27,6 @@ public class DepartmentModel extends AbstractModel<DepartmentModel> implements C
 	}
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
-	}
-	public String getCheck() {
-		return check;
-	}
-	public void setCheck(String check) {
-		this.check = check;
 	}
 	@Override
 	public boolean equals(Object obj) {

@@ -100,7 +100,7 @@
 
 									</tbody>
 								</table>
-								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button>
+<!-- 								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button> -->
 								
 							</div>
 						</div>
@@ -113,21 +113,21 @@
 	<script type="text/javascript">
 
 
-		function loadMore(){
-			$.ajax({
-				url: '${APIurl}',
-				type: 'GET',
-				contentType: 'text/html;charset=UTF-8',
-				success: function(result){
-// 					console.log(result);
-					var content = document.getElementById('content');
-					content.innerHTML += result;
-				},
-				error: function(error){
-					console.log(error);
-				}
-			});
-		}
+// 		function loadMore(){
+// 			$.ajax({
+// 				url: '${APIurl}',
+// 				type: 'GET',
+// 				contentType: 'text/html;charset=UTF-8',
+// 				success: function(result){
+// // 					console.log(result);
+// 					var content = document.getElementById('content');
+// 					content.innerHTML += result;
+// 				},
+// 				error: function(error){
+// 					console.log(error);
+// 				}
+// 			});
+// 		}
 		
 		$('#btnDelete').click(function(){
 			var data = {};

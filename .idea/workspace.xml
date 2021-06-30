@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Quan_Ly_Nhan_Vien:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f8c4ae4e-436a-49f4-91e6-56418fe62782" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/employee/detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/create_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/api/EmployeeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/api/EmployeeAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tuananh/model/EmployeeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tuananh/model/EmployeeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/common/admin/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/common/admin/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/department/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/department/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/admin/employee/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/admin/employee/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/constant/SystemConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/constant/SystemConstant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/DepartmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/DepartmentEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/DepartmentEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/EmployeeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/EmployeeEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/EmployeeEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/FileUploadServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/FileUploadServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/api/DepartmentAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/api/DepartmentAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/api/EmployeeAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/admin/api/EmployeeAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/controller/web/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/controller/web/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/dao/GenericDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/dao/GenericDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IAccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IAccountDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IDepartmentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IDepartmentDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IEmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/dao/IEmployeeDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/AbstractDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/AbstractDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/AccountDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/DepartmentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/DepartmentDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/daoimpl/EmployeeDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/filter/AuthorizationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/filter/AuthorizationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/AccountMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/AccountMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/DepartmentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/DepartmentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/EDMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/EDMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/EmployeeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/EmployeeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/RowMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/mapper/RowMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/AbstractModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/AbstractModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/AccountModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/AccountModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/DepartmentModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/DepartmentModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/EmployeeModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/EmployeeModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/Employee_Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/Employee_Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/model/ProjectModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/model/ProjectModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/paging/PageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/paging/PageRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/paging/Pageble.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/paging/Pageble.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/service/IAccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/service/IAccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/service/IDepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/service/IDepartmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/service/IEmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/service/IEmployeeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/DepartmentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/serviceimpl/EmployeeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/sort/Sorter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/sort/Sorter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/utils/FormUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/utils/FormUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/utils/HttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/utils/HttpUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/utils/MessageUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/utils/MessageUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tuananh/utils/SessionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tuananh/utils/SessionUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.tuananh/Quan_Ly_Nhan_Vien/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.tuananh/Quan_Ly_Nhan_Vien/pom.properties" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeLoadMoreController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeDetailsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/edit.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/detail.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="84" column="87" selection-start-line="84" selection-start-column="87" selection-end-line="84" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="44" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeDetailsController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/admin/employee/detail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/admin/employee/list.jsp" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="200" />
+    <option name="y" value="5" />
+    <option name="width" value="1195" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tuananh" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tuananh" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tuananh" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Quan_Ly_Nhan_Vien" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Quan_Ly_Nhan_Vien" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/views/admin/employee" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\eclipse-java-2020-06-R-win32-x86_64\eclipse\Quan_Ly_Nhan_Vien\src\main\webapp\views\admin\employee" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.57" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.57" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Quan_Ly_Nhan_Vien_war/" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Quan_Ly_Nhan_Vien:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Quan_Ly_Nhan_Vien_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Quan_Ly_Nhan_Vien" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50779" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Quan_Ly_Nhan_Vien:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f8c4ae4e-436a-49f4-91e6-56418fe62782" name="Default Changelist" comment="" />
+      <created>1625063739064</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625063739064</updated>
+      <workItem from="1625063745997" duration="2139000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2139000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Web" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Application Servers" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="CDI" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/default_man.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/default_woman.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/decorators/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="48" column="20" lean-forward="true" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/common/taglib.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeEditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeLoadMoreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/admin/employee/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="84" column="87" selection-start-line="84" selection-start-column="87" selection-end-line="84" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="44" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tuananh/controller/admin/EmployeeDetailsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>15</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

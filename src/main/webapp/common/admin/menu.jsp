@@ -47,10 +47,7 @@
 				<li><a
 					href='<c:url value="/admin-department" />'>
 						<i class="menu-icon fa fa-caret-right"></i> Quản lý phòng ban
-				<li><a
-					href='<c:url value="/admin-project" />'>
-						<i class="menu-icon fa fa-caret-right"></i> Quản lý dự án
-				</a> <b class="arrow"></b></li>
+						</a> <b class="arrow"></b></li>
 			</ul></li>
 	</ul>
 	<div class="sidebar-toggle sidebar-collapse">
