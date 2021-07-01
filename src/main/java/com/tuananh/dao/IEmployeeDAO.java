@@ -16,4 +16,7 @@ public interface IEmployeeDAO {
 	int getTotalItem();
 //	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
 	List<EmployeeModel> findTop3();
+	void saveImageName(String imageName, Long id);
+	Long getLastId();
+	
 }

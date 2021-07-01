@@ -59,7 +59,7 @@ public class EmployeeEditController extends HttpServlet {
 						dep.setCheck("checked");
 					}
 				} else {
-//					departments.removeAll(departmentChecked);
+					departments.removeAll(departmentChecked);
 					for (DepartmentModel dep : departmentChecked) {
 						dep.setCheck("checked");
 

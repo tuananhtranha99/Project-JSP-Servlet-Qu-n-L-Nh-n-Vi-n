@@ -83,7 +83,7 @@
                                                 <strong class="margin-10px-left text-green">Địa chỉ</strong> 
                                              </div> 
                                             <div class="col-md-7 col-7"> 
-                                                 <p>Regina ST, London, SK.</p> 
+                                                 <p>${model.address}</p> 
                                             </div> 
                                          </div> 
                                      </li> 

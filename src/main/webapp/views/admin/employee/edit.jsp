@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-employee"/>
-<c:url var ="NewURL" value="/admin-employee"/>
+<c:url var ="NewURL" value="/admin-employee-edit"/>
 <html>
 <head>
     <title>Chỉnh sửa nhân viên</title>
@@ -29,37 +29,33 @@
   										${messageResponse}
 									</div>
 						</c:if>
-                        <form id="formSubmit">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Phòng ban</label>
-                                <div class="col-sm-9">
-                                	
-									<c:forEach var="item" items="${departments}">
-										<label class="checkbox-inline">
-									 		<input type="checkbox" value="${item.id}" ${item.check}>${item.name}
-										</label>
-									</c:forEach>
-								</div>
+						 <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>
+                                <div class="col-sm-9" style="display:flex" >
+                                   
+                                    <input type="text" class="form-control col-sm-9" readonly value="${model.image}"/>
+                                    
+                                    	<form action='<c:url value="/api-upload-file?id=${model.id}&message=update_success"></c:url>' method="post" enctype="multipart/form-data" class="col-sm-3" style="display:flex" id="myform"> 
+                                    	<input type="file" name="file" multiple="multiple" />
+<!--                                     	<input type="submit" value="Tải lên" /> -->
+                       					</form>
+                                    
+                                    
+                                   
+                                   
+                               </div>
                             </div>
+							<br/>
                             <br/>
-                            <br/>
+                        <form id="formSubmit">
+                            
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Tên</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="name" name="name" value="${model.name}"/>
                                 </div>
                             </div>
-                            <br/>
-                            <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Hình đại diện</label>
-                                <div class="col-sm-9" style="display:flex" >
-                                   
-                                    <input type="text" class="form-control col-sm-9" id="image" name="image" value="${model.image}"/>
-                                    
-                                   
-                                </div>
-                            </div>
+							<br/>
                             <br/>
                             <br/>
                             <div class="form-group">
@@ -110,6 +106,27 @@
                             <br/>
                             <br/>
                             <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Địa chỉ</label>
+                                <div class="col-sm-9">                                 
+                                    <input type="text" class="form-control" id="address" name="address" value="${model.address}"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Phòng ban</label>
+                                <div class="col-sm-9">
+                                	
+									<c:forEach var="item" items="${departments}">
+										<label class="checkbox-inline">
+									 		<input type="checkbox" value="${item.id}" ${item.check}>${item.name}
+										</label>
+									</c:forEach>
+								</div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
                                 <div class="col-sm-12">
                                     <c:if test="${not empty model.id}">
                                         <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật thông tin" id="btnAddOrUpdate"/>
@@ -130,6 +147,7 @@
 	
 
 	$("#btnAddOrUpdate").click(function(e){
+		uploadFile();
 		e.preventDefault(); // tránh submit nhầm url
 		var data = {};
 		var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
@@ -140,6 +158,7 @@
 			data[""+v.name+""] = v.value;
 		});
 		data["departmentIdMapping"] = department;
+	
 		var id = $('#id').val();
 		if(id == ""){
 			
@@ -151,7 +170,28 @@
 		
 	});
 	
+	//api để upload ảnh
+	function uploadFile(){
+		var form = $('#myform')[0];
+        var data = new FormData(form);
+		$.ajax({
+			url: '/Quan_Ly_Nhan_Vien/api-upload-file?id=' + $('#id').val() ,
+			type: 'POST',
+			enctype : 'multipart/form-data',
+			contentType : false,
+			processData : false,
+			data : data,
+			success: function(result){
+				console.log(result);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+		
+	}
 	
+	//api thêm mới nhân viên
 	function addEmployee(data){
 		$.ajax({
 			url: '${APIurl}',
@@ -166,8 +206,10 @@
 				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
 			}
 		});
+		
 	}
 	
+	//api cập nhật nhân viên
 	function updateEmployee(data){
 		$.ajax({
 			url: '${APIurl}',
@@ -180,8 +222,9 @@
 			},
 			error: function(error){
 				window.location.href = "${newURL}?type=list&maxPageItem=2&page=1&message=error_system";
-			}
+			},
 		});
+
 	}
 </script>
 </body>

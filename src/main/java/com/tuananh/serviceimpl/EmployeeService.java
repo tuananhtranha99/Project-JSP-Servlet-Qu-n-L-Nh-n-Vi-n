@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.tuananh.controller.admin.api.UploadFileController;
 import com.tuananh.dao.IDepartmentDAO;
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.model.DepartmentModel;
@@ -30,9 +31,13 @@ public class EmployeeService implements IEmployeeService {
 		
 		List<Long> list = employeeModel.getDepartmentIdMapping(); // danh sách department mà client gửi lên (theo id)
 		Long employeeId = employeeDAO.save(employeeModel);
+		UploadFileController upload = new UploadFileController(); 
+		String imageName = upload.getExtendedFileName(employeeId);
+		 
 		for (Long o : list) {
 			departmentDAO.saveDepartmentAndEmployee( employeeId, o);
 		}
+		employeeDAO.saveImageName(imageName, employeeId);
 		
 		
 		

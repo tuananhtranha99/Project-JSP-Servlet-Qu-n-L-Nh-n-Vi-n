@@ -25,7 +25,7 @@ import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
 import com.tuananh.utils.HttpUtil;
 
-@MultipartConfig
+
 @WebServlet(urlPatterns = {"/api-admin-department"})
 public class DepartmentAPI extends HttpServlet{
 	private static final long serialVersionUID = -7167694688161642839L;

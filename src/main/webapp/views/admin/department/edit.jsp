@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-department"/>
-<c:url var ="NewURL" value="/admin-department"/>
+<c:url var ="NewURL" value="/admin-department-edit"/>
 <html>
 <head>
     <title>Chỉnh sửa nhân viên</title>

@@ -13,6 +13,7 @@ public class EmployeeModel extends AbstractModel<EmployeeModel> implements Compa
 	private String email;
 	private String status;
 	private String identity;
+	private String address;
 	private boolean deleted;
 	private List<DepartmentModel> departmentIds = new ArrayList<>();
 	private List<ProjectModel> projectIds = new ArrayList<>();
@@ -110,5 +111,11 @@ public class EmployeeModel extends AbstractModel<EmployeeModel> implements Compa
 	public int compareTo(EmployeeModel o) {
 		// TODO Auto-generated method stub
 		return (int) (this.getId() - o.getId());
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

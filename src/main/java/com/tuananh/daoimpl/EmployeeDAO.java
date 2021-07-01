@@ -3,6 +3,7 @@ package com.tuananh.daoimpl;
 import java.util.List;
 
 import com.mysql.cj.util.StringUtils;
+import com.tuananh.controller.admin.api.UploadFileController;
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.mapper.EmployeeMapper;
 import com.tuananh.model.EmployeeModel;
@@ -26,28 +27,29 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 
 	@Override
 	public Long save(EmployeeModel employeeModel) {
+		
 		StringBuilder sql = new StringBuilder("Insert into employee(name, birthday, ");
-		sql.append(" gender, image, contact, email, status, identity) ");
-		sql.append("values (?, ?, ?, ?, ?, ?, ?, ?)");
+		sql.append(" gender, image, contact, email, status, identity, address) ");
+		sql.append("values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		return insert(sql.toString(), employeeModel.getName(), employeeModel.getBirthday(), employeeModel.isGender(), 
-				employeeModel.getImage(), employeeModel.getContact(), employeeModel.getEmail(), employeeModel.getStatus(),
-				employeeModel.getIdentity());
+				"", employeeModel.getContact(), employeeModel.getEmail(), employeeModel.getStatus(),
+				employeeModel.getIdentity(), employeeModel.getAddress());
 	}
 
 	@Override
 	public void update(EmployeeModel updateEmployee) {
+		UploadFileController upload = new UploadFileController();
+		String imageName = upload.getExtendedFileName(updateEmployee.getId());
 		StringBuilder sql = new StringBuilder("Update employee set ");
 		sql.append("name = ?,");
 		sql.append(" birthday = ?,");
 		sql.append(" gender = ?,");
-		sql.append(" image = ?,");
 		sql.append(" contact = ?,");
 		sql.append(" email = ?,");
-		sql.append(" status = ?, identity = ?");
+		sql.append(" status = ?, identity = ?, address = ?, image = ?");
 		sql.append(" where id = ?");
-		update(sql.toString(), updateEmployee.getName(), updateEmployee.getBirthday(), updateEmployee.isGender(), 
-				updateEmployee.getImage(), updateEmployee.getContact(), updateEmployee.getEmail(), updateEmployee.getStatus(),
-				updateEmployee.getIdentity(), updateEmployee.getId());
+		update(sql.toString(), updateEmployee.getName(), updateEmployee.getBirthday(), updateEmployee.isGender(), updateEmployee.getContact(), updateEmployee.getEmail(), updateEmployee.getStatus(),
+				updateEmployee.getIdentity(),updateEmployee.getAddress(),imageName==null||imageName.isEmpty()?findOne(updateEmployee.getId()).getImage():imageName, updateEmployee.getId());
 		
 	}
 
@@ -101,6 +103,24 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 		String sql = "delete from employee_department where id_department = ?";
 		update(sql, departmentId);
 	}
+
+	@Override
+	public void saveImageName(String imageName, Long id) {
+		String sql = "update employee set image = ? where id = ?";
+		update(sql, imageName, id);
+		
+	}
+
+	@Override
+	public Long getLastId() {
+		StringBuilder sql = new StringBuilder("select * from employee order by id desc limit 1");
+		List<EmployeeModel> emplList = query(sql.toString(), new EmployeeMapper());
+		return emplList.isEmpty()? null : emplList.get(0).getId();
+	}
+
+	
+	
+	
 
 	
 
