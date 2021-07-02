@@ -14,7 +14,7 @@ public interface IEmployeeDAO {
 	void deleteByDepartmentId(Long departmentId);
 	List<EmployeeModel> findAll(Pageble pageble);
 	int getTotalItem();
-//	List<EmployeeModel> findByName(Pageble pageble, String employeeName);
+	List<EmployeeModel> searchByName(Pageble pageble, String employeeName);
 	List<EmployeeModel> findTop3();
 	void saveImageName(String imageName, Long id);
 	Long getLastId();

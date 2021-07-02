@@ -37,7 +37,6 @@
                                     
                                     	<form action='<c:url value="/api-upload-file?id=${model.id}&message=update_success"></c:url>' method="post" enctype="multipart/form-data" class="col-sm-3" style="display:flex" id="myform"> 
                                     	<input type="file" name="file" multiple="multiple" />
-<!--                                     	<input type="submit" value="Tải lên" /> -->
                        					</form>
                                     
                                     
