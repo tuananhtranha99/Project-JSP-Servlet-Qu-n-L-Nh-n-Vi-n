@@ -8,11 +8,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Danh sách nhân viên</title>
-
+<link rel="stylesheet"
+	href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
+<link rel="stylesheet"
+	href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
+<link rel="stylesheet"
+	href="<c:url value='/template/admin/assets/css/ace.min.css' />"
+	class="ace-main-stylesheet" id="main-ace-style" />
+<script
+	src="<c:url value='/template/admin/assets/js/ace-extra.min.js' />"></script>
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript'
+	src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
+<script
+	src="<c:url value='/template/admin/assets/js/jquery.2.1.1.min.js' />"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+	src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+	<link href="<c:url value='/template/admin/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
 </head>
-<body>
 
-	<div class="main-content">
+<body class="no-skin">
+	<!-- header -->
+	<%@ include file="/common/admin/header.jsp"%>
+	<!-- header -->
+
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch (e) {
+			}
+		</script>
+		<%@ include file="/common/admin/menu.jsp"%>
+		<div class="main-content">
 		<form action="<c:url value='/admin-employee'/>" id="formSubmit"
 			method="get">
 			<div class="main-content-inner">
@@ -103,7 +139,6 @@
 
 									</tbody>
 								</table>
-<!-- 								<button class="btn btn-primary" id="loadMore">Xem thêm</button> -->
 
 								
 							</div>
@@ -115,24 +150,47 @@
 			</div>
 		</form>
 	</div>
+		<%@ include file="/common/admin/footer.jsp"%>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse display"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>
 
+	
+	
+	<script
+		src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.sparkline.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.flot.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/ace-elements.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/ace.min.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/assets/js/bootstrap.min.js'/>"></script>
+
+	<!-- page specific plugin scripts -->
+	<script
+		src="<c:url value='/template/admin/assets/js/jquery-ui.min.js'/>"></script>
 	<script type="text/javascript">
 	
 	
 	
 		
 		
-		
-// 		$('#btnSearch').click(function(){
-// 			var data = {};
-// 			var txtSearch = $('#txtSearch').val();
-// 			data['txtSearch'] = txtSearch;
-// 			searchEmployee(data);
-// 		});
-		
-// 		function searchEmployee(data){
-			
-// 		}
+	
 
 
 		  $("#checkedAll").change(function(){
@@ -203,24 +261,32 @@
 			}
 			
 			
+			
+			$(window).scroll(function() {
+				   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+				       loadMore();
+				   }
+				});
+			
+			
+			
 		
-
-// 				$("body").on('click', '#loadMore' ,function(){ 
-// 					$.ajax({
-// 						url: '/Quan_Ly_Nhan_Vien/employee-load',
-// 						type: 'POST',
-// 						contentType: 'text/html;charset=UTF-8',
-// 						success: function(result){
-// //								console.log(result);
-// 							var content = $('#content');
-// 							content.html(result);
-// 						},
-// 						error: function(error){
-// 							console.log(error);
-// 						}
-// 					});
+			
+			
+			function loadMore(){ 
+					$.ajax({
+						url: '/Quan_Ly_Nhan_Vien/employee-load',
+						type: 'GET',
+						success: function(result){
+							var row = document.getElementById("content");
+							row.innerHTML += result;
+						},
+						error: function(error){
+							
+						}
+					});
+			}
 					
-// 				});	
 		
 		
 		
@@ -228,6 +294,6 @@
 		
 	</script>
 	
-
+	
 </body>
 </html>

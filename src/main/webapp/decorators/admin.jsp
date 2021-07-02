@@ -46,7 +46,6 @@
 			}
 		</script>
 		<%@ include file="/common/admin/menu.jsp"%>
-		<dec:body />
 		<%@ include file="/common/admin/footer.jsp"%>
 		<a href="#" id="btn-scroll-up"
 			class="btn-scroll-up btn btn-sm btn-inverse display"> <i
