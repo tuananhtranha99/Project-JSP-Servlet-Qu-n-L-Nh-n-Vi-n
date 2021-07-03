@@ -38,10 +38,21 @@ public class EmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmployeeModel model = new EmployeeModel();
 		String view = "/views/admin/employee/list.jsp";
+		String sort = req.getParameter("sort");
+		String sortLoadMore = "";
+		if(sort == null || sort.equals("nameAtoZ")) {
+			model.setSortBy("asc");
+			sortLoadMore = "nameAtoZ";
+		} else if(sort.equals("nameZtoA")) {
+			model.setSortBy("desc");
+			sortLoadMore = "nameZtoA";
+		}
+		model.setSortName("name");
 		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
-		model.setListResult(employeeService.findAll(pageble));
+		model.setListResult(employeeService.findTop7(pageble));
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
+		req.setAttribute("sortLoadMore", sortLoadMore);
 		req.getRequestDispatcher(view).forward(req, resp);
 		
 

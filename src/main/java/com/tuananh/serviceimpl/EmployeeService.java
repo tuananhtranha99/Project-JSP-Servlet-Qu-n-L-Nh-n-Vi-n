@@ -99,9 +99,15 @@ public class EmployeeService implements IEmployeeService {
 	}
 
 	@Override
-	public List<EmployeeModel> findTop3() {
+	public List<EmployeeModel> findTop7(Pageble pageble) {
 		// TODO Auto-generated method stub
-		return employeeDAO.findTop3();
+		return employeeDAO.findTop7(pageble);
+	}
+
+	@Override
+	public List<EmployeeModel> getNext3(Pageble pageble, int offset) {
+		// TODO Auto-generated method stub
+		return employeeDAO.getNext3(pageble, offset);
 	}
 
 }

@@ -8,6 +8,7 @@ import com.tuananh.dao.IDepartmentDAO;
 import com.tuananh.dao.IEmployeeDAO;
 import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
+import com.tuananh.paging.Pageble;
 import com.tuananh.service.IDepartmentService;
 
 public class DepartmentService implements IDepartmentService{
@@ -72,4 +73,21 @@ public class DepartmentService implements IDepartmentService{
 		
 	}
 
+	@Override
+	public List<DepartmentModel> searchByName(Pageble pageble, String departmentName) {
+		// TODO Auto-generated method stub
+		return departmentDAO.searchByName(pageble, departmentName);
+	}
+
+	@Override
+	public List<DepartmentModel> findTop7(Pageble pageble) {
+		// TODO Auto-generated method stub
+		return departmentDAO.findTop7(pageble);
+	}
+
+	@Override
+	public List<DepartmentModel> getNext3(Pageble pageble, int offset) {
+		// TODO Auto-generated method stub
+		return departmentDAO.getNext3(pageble, offset);
+	}
 }

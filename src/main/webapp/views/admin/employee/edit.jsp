@@ -31,6 +31,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
 	src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+<script
+	src="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js' />"></script>
 	<link href="<c:url value='/template/admin/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body class="no-skin">
@@ -85,12 +87,12 @@
                             </div>
 							<br/>
                             <br/>
-                        <form id="formSubmit">
+                        <form id="formSubmit" >
                             
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Tên</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="name" name="name" value="${model.name}"/>
+                                    <input type="text" class="form-control" id="name" name="name" value="${model.name}" required/>
                                 </div>
                             </div>
 							<br/>
@@ -99,7 +101,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Liên hệ</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="contact" name="contact" value="${model.contact}"/>
+                                    <input type="text" class="form-control" id="contact" name="contact" value="${model.contact}" />
                                 </div>
                             </div>
                             <br/>
@@ -108,6 +110,23 @@
                                 <label class="col-sm-3 control-label no-padding-right">Email</label>
                                 <div class="col-sm-9">                                 
                                     <input type="text" class="form-control" id="email" name="email" value="${model.email}"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Giới tính</label>
+                                <div class="col-sm-9">                                 
+                                    <select class="form-select" id="gender" name="gender">
+									  <c:if test="${model.gender == false }">
+									  	<option value="false" selected>Nam</option>
+									  	<option value="true">Nữ</option>
+									  </c:if>
+									  <c:if test="${model.gender == true }">
+									  	<option value="false" >Nam</option>
+									  	<option value="true" selected>Nữ</option>
+									  </c:if>
+									</select>
                                 </div>
                             </div>
                             <br/>
@@ -138,7 +157,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Số chứng minh thư</label>
                                 <div class="col-sm-9">                                 
-                                    <input type="text" class="form-control" id="identity" name="identity" value="${model.identity}"/>
+                                    <input type="text" class="form-control" id="identity" name="identity" value="${model.identity}"  required/>
                                 </div>
                             </div>
                             <br/>
@@ -151,16 +170,46 @@
                             </div>
                             <br/>
                             <br/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Phòng ban</label>
-                                <div class="col-sm-9">
-                                	
-									<c:forEach var="item" items="${departments}">
-										<label class="checkbox-inline">
-									 		<input type="checkbox" value="${item.id}" ${item.check}>${item.name}
-										</label>
-									</c:forEach>
-								</div>
+                             <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Danh sách phòng ban</label>
+                                                              
+                                    
+                                    	<c:if test="${not empty model.departmentIds }">
+                                    	 <div class="col-sm-8" style="border: solid #d5d5d5 1px; border-radius: 20px; padding: 10px">  
+                                    		<div class="row">
+                                    			<c:forEach var="item" items="${model.departmentIds}"> 
+								    				<div class=" col-sm-5" style="border: solid #d5d5d5 1px; border-radius: 20px; padding: 10px ;margin:5px 5px;">
+														<img src="default_man.jpg" alt="Avatar" class="avatar"
+														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
+														<div class="text" style="margin-top:5px">
+								    						<div><strong>${item.name }</strong></div>
+								    					</div>
+													</div>
+												</c:forEach>
+								   			</div>
+								   		 </div>
+                                    	</c:if>
+                                    	
+                                    
+                               
+                                		<c:if test="${empty model.departmentIds }">
+                                    		<div class="col-sm-8">
+                                    			<input type="text" class="form-control" id="description" name="description" value="Hiện chưa thuộc phòng ban nào" disabled/>
+                                			</div>
+                                    	</c:if>
+                                    	
+                                    	<div class="col-sm-1">
+                                    	<a flag="info"
+												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
+												   title='Chỉnh sửa danh sách nhân viên' href='#' id="openDialog">
+															<span>
+																<i class="fa fa-plus-circle bigger-110 purple"></i>
+															</span>
+												</a>
+												
+												
+												
+												</div>
                             </div>
                             <br/>
                             <br/>
@@ -175,6 +224,44 @@
                                 </div>
                             </div>
                            <input type="hidden" value="${model.id}" id="id" name="id" />
+                           
+                            <div id="dialog-modal" title="Danh sách nhân viên" style="display:none">
+							  <div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th><input type="checkbox" id="checkedAll" name="checkedAll"></th>
+											<th>Tên Phòng Ban</th>
+											<th>Mô tả</th>
+											
+										</tr>
+									</thead>
+									<tbody id="content">
+										<c:forEach var="item" items="${allDepartment}">
+											<tr>
+												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ${item.check}></td>
+												<td>
+												
+												
+												${item.name }
+												
+												</td>
+												<td>${item.description}</td>
+												
+											</tr>
+										</c:forEach>
+
+									</tbody>
+								</table>
+<!-- 								<button class="btn btn-primary" onclick="loadMore()">Xem thêm</button> -->
+								
+							</div>
+						</div>
+					</div>
+							  
+							</div>
                         </form>
                 </div>
             </div>
@@ -216,29 +303,42 @@
 	<script
 		src="<c:url value='/template/admin/assets/js/jquery-ui.min.js'/>"></script>
 	<script>
-	
+	$(function() {
+		   $( "#openDialog").on("click", function(){ 
+		       $( "#dialog-modal" ).dialog({
+		          height: 600,
+		          width: 700,
+		          modal: true,
+		        });
+		       $( "#dialog-modal" ).show();
+		    });
+		 });
 
-	$("#btnAddOrUpdate").click(function(e){
-		uploadFile();
-		e.preventDefault(); // tránh submit nhầm url
-		var data = {};
-		var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
-		var department = $('input[type=checkbox]:checked').map(function(_, el) {
-		    return $(el).val();
-		}).get();
-		$.each(formData, function(i, v){
-			data[""+v.name+""] = v.value;
-		});
-		data["departmentIdMapping"] = department;
-	
-		var id = $('#id').val();
-		if(id == ""){
+		$("#btnAddOrUpdate").click(function(e){
+			if($("#formSubmit").valid()){
+				uploadFile();
+				e.preventDefault(); // tránh submit nhầm url
+				var data = {};
+				var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
+				var department = $('input[type=checkbox]:checked').map(function(_, el) {
+				    return $(el).val();
+				}).get();
+				$.each(formData, function(i, v){
+					data[""+v.name+""] = v.value;
+				});
+				data["departmentIdMapping"] = department;
 			
-			addEmployee(data);
+				var id = $('#id').val();
+				if(id == ""){
+					
+					addEmployee(data);
+					
+				} else {
+					updateEmployee(data);
+				}
+			}
 			
-		} else {
-			updateEmployee(data);
-		}
+		
 		
 	});
 	

@@ -93,8 +93,12 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 	}
 
 	@Override
-	public List<EmployeeModel> findTop3() {
-		StringBuilder sql = new StringBuilder("select * from employee where deleted = 0 limit 3");
+	public List<EmployeeModel> findTop7(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("select * from employee where deleted = 0");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		} 
+		sql.append(" limit 7");
 		return query(sql.toString(), new EmployeeMapper());
 	}
 
@@ -116,6 +120,16 @@ public class EmployeeDAO extends AbstractDAO<EmployeeModel> implements IEmployee
 		StringBuilder sql = new StringBuilder("select * from employee order by id desc limit 1");
 		List<EmployeeModel> emplList = query(sql.toString(), new EmployeeMapper());
 		return emplList.isEmpty()? null : emplList.get(0).getId();
+	}
+
+	@Override
+	public List<EmployeeModel> getNext3(Pageble pageble, int offset) {
+		StringBuilder sql = new StringBuilder("select * from employee where deleted = 0 ");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		} 
+		sql.append(" limit ?, 3");
+		return query(sql.toString(), new EmployeeMapper(), offset);
 	}
 
 	

@@ -6,7 +6,7 @@
 <c:url var ="NewURL" value="/admin-department-edit"/>
 <html>
 <head>
-    <title>Chỉnh sửa nhân viên</title>
+    <title>Chỉnh sửa phòng ban</title>
 <link rel="stylesheet"
 	href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
 <link rel="stylesheet"
@@ -31,6 +31,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
 	src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+	<script
+	src="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js' />"></script>
 	<link href="<c:url value='/template/admin/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>	
 </head>
 <body class="no-skin">
@@ -57,7 +59,7 @@
                     <i class="ace-icon fa fa-home home-icon"></i>
                     <a href="#">Trang chủ</a>
                 </li>
-                <li class="active">Chỉnh sửa phòng ban/li>
+                <li class="active">Chỉnh sửa phòng ban</li>
             </ul><!-- /.breadcrumb -->
         </div>
         <div class="page-content">
@@ -72,7 +74,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Tên Phòng Ban</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="name" name="name" value="${model.name}"/>
+                                    <input type="text" class="form-control" id="name" name="name" value="${model.name}" required/>
                                 </div>
                             </div>
                             <br/>
@@ -280,22 +282,25 @@ $(document).ready(function() {
 	 });
 
 	$("#btnAddOrUpdate").click(function(e){
-		e.preventDefault(); // tránh submit nhầm url
-		var data = {};
-		var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
-		var employee = $('input[type=checkbox]:checked').map(function(_, el) {
-		    return $(el).val();
-		}).get();
-		$.each(formData, function(i, v){
-			data[""+v.name+""] = v.value;
-		});
-		data["employeeIdMapping"] = employee;
-		var id = $('#id').val();
-		if(id == ""){
-			addDepartment(data);
-		} else {
-			updateDepartment(data);
+		if($("#formSubmit").valid()){
+			e.preventDefault(); // tránh submit nhầm url
+			var data = {};
+			var formData = $('#formSubmit').serializeArray(); // tự động lấy tất cả field có thuộc tính name
+			var employee = $('input[type=checkbox]:checked').map(function(_, el) {
+			    return $(el).val();
+			}).get();
+			$.each(formData, function(i, v){
+				data[""+v.name+""] = v.value;
+			});
+			data["employeeIdMapping"] = employee;
+			var id = $('#id').val();
+			if(id == ""){
+				addDepartment(data);
+			} else {
+				updateDepartment(data);
+			}
 		}
+		
 		
 	});
 	

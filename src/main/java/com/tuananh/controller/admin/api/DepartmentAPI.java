@@ -38,22 +38,7 @@ public class DepartmentAPI extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html;charset=UTF-8");
-			List<EmployeeModel> list = employeeService.findTop3();		
-			PrintWriter out = resp.getWriter();
-			for (EmployeeModel o : list) {
-				out.println("<tr>\r\n" + 
-						"												<td><input type=\"checkbox\" value=\""+ o.getId() +"\"></td>\r\n" + 
-						"												<td>"+ o.getName() +"</td>\r\n" + 
-						"												<td>"+ o.getContact() +"</td>\r\n" + 
-						"												<td>\r\n" + 
-						"												<a class=\"btn btn-sm btn-primary btn-edit\" data-toggle=\"tooltip\"\r\n" + 
-						"												  title=\"Cập nhật nhân viên\" href='#'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\r\n" + 
-						"												</a>\r\n" + 
-						"												</td>\r\n" + 
-						"											</tr>");
-			}
+		
 		
 	}
 	

@@ -14,6 +14,7 @@ public interface IEmployeeService {
 	int getTotalItem();
 	EmployeeModel findOne(long id);
 	List<EmployeeModel> searchByName(Pageble pageble, String employeeName);
-	List<EmployeeModel> findTop3();
+	List<EmployeeModel> findTop7(Pageble pageble);
+	List<EmployeeModel> getNext3(Pageble pageble,int offset);
 
 }

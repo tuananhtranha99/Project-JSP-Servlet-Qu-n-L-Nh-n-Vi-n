@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.tuananh.dao.IDepartmentDAO;
 import com.tuananh.mapper.DepartmentMapper;
-import com.tuananh.mapper.EDMapper;
 import com.tuananh.model.DepartmentModel;
+import com.tuananh.paging.Pageble;
 
 public class DepartmentDAO extends AbstractDAO<DepartmentModel> implements IDepartmentDAO {
 
@@ -61,6 +61,38 @@ public class DepartmentDAO extends AbstractDAO<DepartmentModel> implements IDepa
 	public void delete(long id) {
 		String sql = "update department set deleted = b'1' where id = ?";
 		update(sql, id);
+	}
+
+	@Override
+	public List<DepartmentModel> searchByName(Pageble pageble, String departmentName) {
+		StringBuilder sql = new StringBuilder("select * from department where name like ? and deleted = 0");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		}
+		if(pageble.getOffset() != null && pageble.getLimit() != null) {
+			sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit());
+		} 
+		return query(sql.toString(), new DepartmentMapper(),"%" + departmentName + "%");
+	}
+
+	@Override
+	public List<DepartmentModel> findTop7(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("select * from department where deleted = 0");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		} 
+		sql.append(" limit 10");
+		return query(sql.toString(), new DepartmentMapper());
+	}
+
+	@Override
+	public List<DepartmentModel> getNext3(Pageble pageble, int offset) {
+		StringBuilder sql = new StringBuilder("select * from department where deleted = 0 ");
+		if(pageble.getSorter().getSortName() != null && !pageble.getSorter().getSortName().isEmpty() && pageble.getSorter().getSortBy() != null && !pageble.getSorter().getSortBy().isEmpty()) {
+			sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		} 
+		sql.append(" limit ?, 3");
+		return query(sql.toString(), new DepartmentMapper(), offset);
 	}
 
 	

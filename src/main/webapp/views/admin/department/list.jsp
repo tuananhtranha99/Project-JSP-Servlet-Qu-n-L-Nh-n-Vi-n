@@ -49,7 +49,7 @@
 		</script>
 		<%@ include file="/common/admin/menu.jsp"%>
 		<div class="main-content">
-		<form action="<c:url value='/admin-employee'/>" id="formSubmit"
+		<form action="<c:url value='/admin-department'/>" id="formSubmit"
 			method="get">
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -71,14 +71,25 @@
 								<div class="widget-box table-filter">
 									<div class="table-btn-controls">
 									
+										<div class="input-group mb-3 pull-left" style="display: flex">
+  											<input oninput="searchByName(this)" type="text" class="form-control" placeholder="Nhập tên phòng ban" id="txtSearch" name="txtSearch">
+
+										</div>
 										
-<!-- 										<div class="input-group mb-3 pull-left" style="display: flex"> -->
-<!--   											<input type="text" class="form-control" placeholder="Search" id="txtSearch" name="txtSearch"> -->
-<!--     										<button class="btn " id="btnSearch" name="btnSearch"><i class="fa fa-search" aria-hidden="true"></i></button> -->
-<!-- 										</div> -->
-										
-									
+										<input type="hidden" name="sort" value="">
 										<div class="pull-right tableTools-container">
+											<c:if test="${sortLoadMore == 'nameZtoA' }">
+												<select id="sort" >
+												  <option value="nameAtoZ" >Theo thứ tự tên từ A - Z</option>
+												  <option value="nameZtoA" selected>Theo thứ tự tên từ Z - A</option>
+											</select>
+											</c:if>
+											<c:if test="${sortLoadMore == 'nameAtoZ' }">
+												<select id="sort" >
+												  <option value="nameAtoZ" selected>Theo thứ tự tên từ A - Z</option>
+												  <option value="nameZtoA" >Theo thứ tự tên từ Z - A</option>
+											</select>
+											</c:if>
 											<div class="dt-buttons btn-overlap btn-group">
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
@@ -115,7 +126,7 @@
 									</thead>
 									<tbody id="content">
 										<c:forEach var="item" items="${model.listResult}">
-											<tr>
+											<tr class="department">
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle"></td>
 												<td>
 												
@@ -145,6 +156,7 @@
 					</div>
 				</div>
 		</form>
+		<input type="hidden" id="sortLoadMore" value="${sortLoadMore}"/>
 	</div>
 		<%@ include file="/common/admin/footer.jsp"%>
 		<a href="#" id="btn-scroll-up"
@@ -183,21 +195,6 @@
 		<script type="text/javascript">
 
 
-// 		function loadMore(){
-// 			$.ajax({
-// 				url: '${APIurl}',
-// 				type: 'GET',
-// 				contentType: 'text/html;charset=UTF-8',
-// 				success: function(result){
-// // 					console.log(result);
-// 					var content = document.getElementById('content');
-// 					content.innerHTML += result;
-// 				},
-// 				error: function(error){
-// 					console.log(error);
-// 				}
-// 			});
-// 		}
 		
 		$('#btnDelete').click(function(){
 			var data = {};
@@ -223,16 +220,6 @@
 			});
 		}
 		
-// 		$('#btnSearch').click(function(){
-// 			var data = {};
-// 			var txtSearch = $('#txtSearch').val();
-// 			data['txtSearch'] = txtSearch;
-// 			searchEmployee(data);
-// 		});
-		
-// 		function searchEmployee(data){
-			
-// 		}
 
 		$(document).ready(function() {
 		  $("#checkedAll").change(function(){
@@ -260,6 +247,59 @@
 		    }
 		  });
 		});
+		
+		function searchByName(param){
+			var txtSearch = param.value;
+			$.ajax({
+				url: '/Quan_Ly_Nhan_Vien/admin-search-department',
+				type: 'GET',
+				data: {
+					txt: txtSearch
+				},
+				success: function(result){
+					var row = document.getElementById("content");
+					row.innerHTML = result;
+				},
+				error: function(error){
+					
+				}
+			});
+		}
+		
+		$(window).scroll(function() {
+			   if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
+			       loadMore();
+			   }
+			});
+		
+		
+		
+	
+		
+		
+		function loadMore(){ 
+				var amount = document.getElementsByClassName("department").length;
+				$.ajax({
+					url: '/Quan_Ly_Nhan_Vien/department-load',
+					type: 'GET',
+					data:{
+						sort: $('#sortLoadMore').val(),
+						offset: amount
+					},
+					success: function(result){
+						var row = document.getElementById("content");
+						row.innerHTML += result;
+					},
+					error: function(error){
+						
+					}
+				});
+		}
+		$('select').on('change', function() {
+			var sort = this.value;
+			$('input[name=sort]').val(sort);
+			$('#formSubmit').submit();
+			});
 	</script>
 </body>
 

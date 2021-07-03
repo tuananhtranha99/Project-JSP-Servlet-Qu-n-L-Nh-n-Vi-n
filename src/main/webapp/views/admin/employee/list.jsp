@@ -73,12 +73,24 @@
 									
 										
 										<div class="input-group mb-3 pull-left" style="display: flex">
-  											<input oninput="searchByName(this)" type="text" class="form-control" placeholder="Search" id="txtSearch" name="txtSearch">
-<!--     										<button class="btn " id="btnSearch" name="btnSearch"><i class="fa fa-search" aria-hidden="true"></i></button> -->
+  											<input oninput="searchByName(this)" type="text" class="form-control" placeholder="Nhập tên nhân viên" id="txtSearch" name="txtSearch">
+
 										</div>
 										
-									
+										<input type="hidden" name="sort" value="">
 										<div class="pull-right tableTools-container">
+											<c:if test="${sortLoadMore == 'nameZtoA' }">
+												<select id="sort" >
+												  <option value="nameAtoZ" >Theo thứ tự tên từ A - Z</option>
+												  <option value="nameZtoA" selected>Theo thứ tự tên từ Z - A</option>
+											</select>
+											</c:if>
+											<c:if test="${sortLoadMore == 'nameAtoZ' }">
+												<select id="sort" >
+												  <option value="nameAtoZ" selected>Theo thứ tự tên từ A - Z</option>
+												  <option value="nameZtoA" >Theo thứ tự tên từ Z - A</option>
+											</select>
+											</c:if>
 											<div class="dt-buttons btn-overlap btn-group">
 												<a 
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
@@ -115,7 +127,7 @@
 									</thead>
 									<tbody id="content">
 										<c:forEach var="item" items="${model.listResult}">
-											<tr>
+											<tr class="employee">
 												<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" class="checkSingle" ></td>
 												<td >
 												<a href='<c:url value="/admin-employee-detail?id=${item.id}"></c:url>' class="openDialog" style="color: black">
@@ -149,6 +161,7 @@
 				</div>
 			</div>
 		</form>
+		<input type="hidden" id="sortLoadMore" value="${sortLoadMore}"/>
 	</div>
 		<%@ include file="/common/admin/footer.jsp"%>
 		<a href="#" id="btn-scroll-up"
@@ -245,7 +258,7 @@
 			function searchByName(param){
 				var txtSearch = param.value;
 				$.ajax({
-					url: '/Quan_Ly_Nhan_Vien/admin-search',
+					url: '/Quan_Ly_Nhan_Vien/admin-search-employee',
 					type: 'GET',
 					data: {
 						txt: txtSearch
@@ -263,7 +276,7 @@
 			
 			
 			$(window).scroll(function() {
-				   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+				   if($(window).scrollTop() + $(window).height() >= $(document).height() ) {
 				       loadMore();
 				   }
 				});
@@ -274,9 +287,14 @@
 			
 			
 			function loadMore(){ 
+					var amount = document.getElementsByClassName("employee").length;
 					$.ajax({
 						url: '/Quan_Ly_Nhan_Vien/employee-load',
 						type: 'GET',
+						data:{
+							sort: $('#sortLoadMore').val(),
+							offset: amount
+						},
 						success: function(result){
 							var row = document.getElementById("content");
 							row.innerHTML += result;
@@ -286,6 +304,12 @@
 						}
 					});
 			}
+			$('select').on('change', function() {
+				var sort = this.value;
+				$('input[name=sort]').val(sort);
+				$('#formSubmit').submit();
+				});
+
 					
 		
 		

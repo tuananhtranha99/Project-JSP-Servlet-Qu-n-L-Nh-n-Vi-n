@@ -36,10 +36,21 @@ public class DepartmentController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DepartmentModel model = new DepartmentModel();
 		String view = "/views/admin/department/list.jsp";
+		String sort = req.getParameter("sort");
+		String sortLoadMore = "";
+		if(sort == null || sort.equals("nameAtoZ")) {
+			model.setSortBy("asc");
+			sortLoadMore = "nameAtoZ";
+		} else if(sort.equals("nameZtoA")) {
+			model.setSortBy("desc");
+			sortLoadMore = "nameZtoA";
+		}
+		model.setSortName("name");
 		Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
-		model.setListResult(departmentService.findAll());
+		model.setListResult(departmentService.findTop7(pageble));
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
+		req.setAttribute("sortLoadMore", sortLoadMore);
 		req.getRequestDispatcher(view).forward(req, resp);
 		
 

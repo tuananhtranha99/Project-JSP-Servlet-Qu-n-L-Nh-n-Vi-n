@@ -27,8 +27,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tuananh.constant.SystemConstant;
 import com.tuananh.model.DepartmentModel;
 import com.tuananh.model.EmployeeModel;
+import com.tuananh.paging.PageRequest;
+import com.tuananh.paging.Pageble;
 import com.tuananh.service.IDepartmentService;
 import com.tuananh.service.IEmployeeService;
+import com.tuananh.sort.Sorter;
 import com.tuananh.utils.FormUtil;
 import com.tuananh.utils.HttpUtil;
 import com.tuananh.utils.MessageUtil;
@@ -47,29 +50,31 @@ public class EmployeeEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmployeeModel model = FormUtil.toModel(EmployeeModel.class, req);
 		String view = "/views/admin/employee/edit.jsp";
-		List<DepartmentModel> departments = departmentService.findAll(); // lấy ra tất cả department
+		List<DepartmentModel> allDepartment = departmentService.findAll(); // lấy ra tất cả department
 		if (model.getId() != null) {
 			model = employeeService.findOne(model.getId());
 			List<DepartmentModel> departmentChecked = departmentService.findByEmployeeId(model.getId()); // lấy ra tất cả department mà employee này tham gia
 			
 			// thực hiện kiểm tra department nào mà employee có tham gia thì department đó sẽ được check để thể hiện là đã tham gia
 			if (departmentChecked != null) {
-				if (departments.size() == departmentChecked.size()) {
-					for (DepartmentModel dep : departments) {
+				if (allDepartment.size() == departmentChecked.size()) {
+					for (DepartmentModel dep : allDepartment) {
 						dep.setCheck("checked");
 					}
 				} else {
-					departments.removeAll(departmentChecked);
+					allDepartment.removeAll(departmentChecked);
 					for (DepartmentModel dep : departmentChecked) {
 						dep.setCheck("checked");
 
 					}
-					departments.addAll(departmentChecked);
-					Collections.sort(departments);
+					allDepartment.addAll(departmentChecked);
+					Collections.sort(allDepartment);
 				}
 			}
+			model.setDepartmentIds(departmentChecked);
 		}
-		req.setAttribute("departments", departments);
+		
+		req.setAttribute("allDepartment", allDepartment);
 		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.MODEL, model);
 		RequestDispatcher rd = req.getRequestDispatcher(view);
