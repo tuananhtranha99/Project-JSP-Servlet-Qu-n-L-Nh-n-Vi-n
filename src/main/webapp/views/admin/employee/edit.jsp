@@ -179,7 +179,7 @@
                                     		<div class="row">
                                     			<c:forEach var="item" items="${model.departmentIds}"> 
 								    				<div class=" col-sm-5" style="border: solid #d5d5d5 1px; border-radius: 20px; padding: 10px ;margin:5px 5px;">
-														<img src="default_man.jpg" alt="Avatar" class="avatar"
+														<img src="department.png" alt="Avatar" class="avatar"
 														 style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%; float: left;  margin-right: 10px;">
 														<div class="text" style="margin-top:5px">
 								    						<div><strong>${item.name }</strong></div>

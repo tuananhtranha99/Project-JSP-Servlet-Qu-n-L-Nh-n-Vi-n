@@ -21,7 +21,8 @@ create table employee
     gender bit null,
     image varchar(255) not null ,
     contact varchar(20) null,
-    email varchar(255),
+    email varchar(255) not null default '',
+    address varchar(255) not null default '',
     deleted bit
 );
 
