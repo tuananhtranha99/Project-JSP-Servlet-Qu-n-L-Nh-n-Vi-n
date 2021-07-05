@@ -1,4 +1,5 @@
-
+CREATE SCHEMA `quan_ly_nhan_vien` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+use quan_ly_nhan_vien;
 
 create table account
 (
